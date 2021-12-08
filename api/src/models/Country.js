@@ -5,7 +5,7 @@ module.exports = sequelize => {
   // defino el modelo
   sequelize.define('country', {
     id: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(3),
       allowNull: false,
       primaryKey: true,
     },
@@ -37,8 +37,10 @@ module.exports = sequelize => {
       type: DataTypes.INTEGER,
       allowNull: true,
     },
-  })
-}
+  }, {
+    timestamps: false,
+  }); 
+  }
 
 // País con las siguientes propiedades:
 // ID (Código de 3 letras) *

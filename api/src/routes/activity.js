@@ -3,48 +3,37 @@ const { Country, Activity } = require('../db.js')
 const axios = require('axios')
 const router = Router()
 
-// router.post('/', async function (req,res){
-//     const {
-//         id,
-//         name,
-//         difficulty,
-//         duration,
-//         season,         
-        
-//     } = req.body;
-
-//      try{
-//         const actCreated = await Activity.create({
-//             name,
-//             season,
-//             duration,
-//             difficulty,
-//         })
-
-//         if(id){
-//          actCreated.addCountry(id)
-//         }
-//         res.send(actCreated) 
-        
-//     }
-//     catch(err){
-//         console.log(err)
-//     }
-// })
-
-// router.get('/', async function (req, res){
-//     const act = await dataDbActivity()
-//     console.log(act)
-//     res.status(200).send(act)
-// })
+// POST /activity:
+// Recibe los datos recolectados desde el formulario controlado de la ruta de creación de actividad turística por body
+// Crea una actividad turística en la base de datos
 
 
-// router.get('/', (req, res) => {
-// 	return Activity.findAll()
-// 	.then((activities) => {
-// 		return res.json(activities);
-// 	})
-// 	.catch((err) => next(err));
-// })
+
+router.post('/', async (req, res, next) => {
+  let { name, difficulty, duration, season, countries } = req.body;
+  //creo la actividad con los datos recibidos
+  let activityCreated = await Activity.create({
+    name,
+    difficulty,
+    duration,
+    season,
+  })
+
+  //busco el pais que me pasaron por body
+  let countriesDb = await Country.findAll({
+    where: { name: countries },
+    attribute: [],
+  })
+  //agrego el pais a la actividad
+  activityCreated.addCountry(countriesDb)
+  res.send('Country added')
+})
 
 module.exports = router
+
+// Actividad Turística con las siguientes propiedades:
+// ID
+// Nombre
+// Dificultad (Entre 1 y 5)
+// Duración
+// Temporada (Verano, Otoño, Invierno o Primavera)

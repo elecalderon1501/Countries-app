@@ -20,7 +20,7 @@
 const server = require('./src/app.js')
 const { conn, Country, Activity } = require('./src/db.js')
 const axios = require('axios')
-const { map } = require('./src/app.js')
+//const { map } = require('./src/app.js')
 
 // Syncing all the models at once.
 conn.sync({ force: true }).then(async () => {
@@ -31,7 +31,7 @@ conn.sync({ force: true }).then(async () => {
       return {
         id: el.cca3,
         name: el.name.common,
-        flags: el.flags[0] ? el.flags[0] : ' ', //el.flags.svg ???
+        flags: el.flags.png ? el.flags.png : ' ', //el.flags.svg ???
         continent: el.continents,
         capital: el.capital ? el.capital : ' ',
         subregion: el.subregion,
