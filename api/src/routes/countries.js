@@ -1,6 +1,7 @@
 const { Router } = require('express')
 const axios = require('axios')
-const { Country, Activity, Op } = require('../db')
+const { Country, Activity } = require('../db')
+const { Op } = require('sequelize')
 
 const router = Router()
 
@@ -9,27 +10,24 @@ const router = Router()
 // Obtener un listado de los paises.
 
 router.get('/', async (req, res, next) => {
-  const { name } = req.query
-  if (name) {
-    let nameCountries = await Country.findAll({
-      where: {
-        name: {
-          [Op.iLike]: '%' + name + '%',
-        },
-        include: {
-          model: Activity,
-        },
-      },
-    })
-    res.json(nameCountries)
-  } 
-  else {
-    let allCountries = await Country.findAll({
-      include: {
-        model: Activity,
-      },
-    })
-    res.json(allCountries)
+  let { name } = req.query
+  try {
+    if (name) {
+      let nameCountries = await Country.findAll({
+        where: { name: { [Op.iLike]: `%${name}%` } },
+        include: Activity,
+      })
+      console.log(name)
+      console.log(nameCountries)
+      res.json(nameCountries)
+    } else {
+      let allCountries = await Country.findAll({
+        include: Activity,
+      })
+      res.json(allCountries)
+    }
+  } catch (error) {
+    next(error)
   }
 })
 
@@ -38,6 +36,23 @@ router.get('/', async (req, res, next) => {
 // Debe traer solo los datos pedidos en la ruta de detalle de país
 // Incluir los datos de las actividades turísticas correspondientes
 
+// model.findOne({
+//   order: [ [ 'id', 'DESC' ]],
+//   });
 
+router.get('/:id', async (req, res, next) => {
+  const { id } = req.params
+  try {
+    const countriesId = await Country.findByPk(id, {
+      include: {
+        model: Activity,
+      },
+    })
+    console.log(countriesId)
+    res.json(countriesId)
+  } catch (error) {
+    next(error)
+  }
+})
 
 module.exports = router

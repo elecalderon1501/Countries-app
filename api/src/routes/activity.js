@@ -7,10 +7,8 @@ const router = Router()
 // Recibe los datos recolectados desde el formulario controlado de la ruta de creación de actividad turística por body
 // Crea una actividad turística en la base de datos
 
-
-
 router.post('/', async (req, res, next) => {
-  let { name, difficulty, duration, season, countries } = req.body;
+  let { name, difficulty, duration, season, countries } = req.body
   //creo la actividad con los datos recibidos
   let activityCreated = await Activity.create({
     name,
@@ -27,6 +25,16 @@ router.post('/', async (req, res, next) => {
   //agrego el pais a la actividad
   activityCreated.addCountry(countriesDb)
   res.send('Country added')
+})
+
+router.get('/', async (req, res, next) => {
+  try {
+    let allActivity = await Activity.findAll()
+    console.log(allActivity)
+    res.json(allActivity)
+  } catch (error) {
+    next(error)
+  }
 })
 
 module.exports = router
