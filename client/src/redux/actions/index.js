@@ -5,16 +5,23 @@ import {
   GET_DETAILS,
   CREATE_ACTIVITY,
   GET_ALL_ACTIVITIES,
-  // APPLY_FILTERS,
+  // FILTER_BY_ACTIVITIES,
+  FILTER_BY_REGION,
+  FILTER_BY_POPULATION,
+  ORDER_BY_NAME,
 } from './actionTypes'
 
 export function getAllCountries() {
   return async function (dispatch) {
-    let allCountries = await axios.get('http://localhost:3001/countries')
-    return dispatch({
-      type: GET_ALL_COUNTRIES,
-      payload: allCountries.data,
-    })
+    try {
+      let allCountries = await axios.get('http://localhost:3001/countries')
+      return dispatch({
+        type: GET_ALL_COUNTRIES,
+        payload: allCountries.data,
+      })
+    } catch (error) {
+      console.log(error)
+    }
   }
 }
 
@@ -50,10 +57,49 @@ export function getDetails(id) {
 
 export function createActivity(obj) {
   return async function (dispatch) {
+    let activityCreated = await axios.post(
+      'http://localhost:3001/activity',
+      obj
+    )
+    return dispatch({
+      type: CREATE_ACTIVITY,
+      payload: activityCreated.data,
+    })
+  }
+}
+
+export function getAllActivities() {
+  return async function (dispatch) {
     try {
-      
+      const allActivities = await axios.get('http://localhost:3001/activity')
+      return dispatch({
+        type: GET_ALL_ACTIVITIES,
+        payload: allActivities.data,
+      })
     } catch (error) {
-      
+      console.log(error)
     }
+  }
+}
+
+export function filterByRegion(payload) {
+  console.log(payload)
+  return {
+    type: FILTER_BY_REGION,
+    payload,
+  }
+}
+
+export function orderByName(payload) {
+  return {
+    type: ORDER_BY_NAME,
+    payload,
+  }
+}
+
+export function filterByPopulation(payload) {
+  return {
+    type: FILTER_BY_POPULATION,
+    payload
   }
 }

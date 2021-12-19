@@ -6,7 +6,7 @@ export default function Landing() {
         <div className = "container">
             <h1> The World </h1>
             <Link to='/home'>
-                <button classNae = "button-home"> Go!</button>
+                <button className = "button-home"> Go!</button>
             </Link>
         </div>
     )
