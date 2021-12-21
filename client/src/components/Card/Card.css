@@ -1,0 +1,71 @@
+:root {
+    --color1: #9aadbf;
+    --color2: #6d98ba;
+    --color3: #d3b99f;
+    --color4: #c17767;
+    --color5: #7a7265;
+  }
+
+.All {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    padding: 3px;
+    height: 255px;
+    width: 100vw;
+}
+
+.Container {
+    display: flex;
+    height: 100%;
+    width: 630px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    background-color: rebeccapurple;
+    border-radius: 10px;
+    padding: 3px
+}
+
+.ImageContainer {
+    display: flex;
+    width: 100px;
+    height: 80px;
+    justify-content: center;
+    padding: 3px;
+}
+
+.Image {
+    display: flex;
+    width: 155px;
+}
+
+.TextContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: gold;
+    font-size: 13px;
+}
+
+.Name {
+    display: flex;
+    height: 30px;
+}
+
+.Link {
+    display: flex;
+    color: gold;
+    font-size: large;
+    flex-direction: column;
+    justify-content: flex-start;
+
+}
+
+.Continents {
+    display: flex;
+
+}

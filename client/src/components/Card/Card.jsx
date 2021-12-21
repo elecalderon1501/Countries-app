@@ -1,19 +1,26 @@
-import { Link } from 'react-router-dom';
+import './Card.css'
+import { Link } from 'react-router-dom'
+import React from 'react'
 
-export default function Card ({id, flags, name, continent, area}){
-    return(
-        <div>
-            <Link to = {`/details/${id}`}>
-            <div>
-                <img src={flags} alt={name} />
-            </div>
-            <div>
-                <p>{name}</p>
-                <p>{continent}</p>
-                <p>{area}km²</p>
-            </div>
-            </Link>
+export default function Card({ id, flags, name, continents }) {
+  return (
+    <>
+      <div className="All">
+        <div className="Container" key={id}>
+          <div className="ImageContainer">
+            <img className="Image" src={flags} alt="flag" />
+          </div>
+          <div className="TextContainer">
+            <h1 className="Name">
+              {name}
+              <Link className="Link" to={`/countries/${id}`}>
+                ({id}){' '}
+              </Link>{' '}
+            </h1>{' '}
+            <h2 className="Continents">{continents}</h2>
+          </div>
         </div>
-    );
-};
-
+      </div>
+    </>
+  )
+}

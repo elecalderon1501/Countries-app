@@ -1,11 +1,18 @@
-import React from "react";
-import Card from "../Card/Card";
+import Card from '../Card/Card'
+import React from 'react'
 
-const Cards = ({countries}) => {
-    return (
-        <div>
-            {countries?map}
-        </div>
-    )
+export default function Cards({ countries }) {
+  return (
+    <>
+      {countries?.map(country => (
+        <Card
+          key={country.id}
+          id={country.id}
+          flags={country.flags}
+          name={country.name}
+          continents={country.continent}
+        />
+      ))}
+    </>
+  )
 }
-

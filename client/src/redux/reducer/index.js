@@ -1,92 +1,110 @@
 import {
   GET_ALL_COUNTRIES,
-  SEARCH_COUNTRIES,
-  GET_DETAILS,
+  COUNTRY_DETAIL,
+  COUNTRY_BY_NAME,
+  COUNTRY_BY_CONTINENT,
+  COUNTRY_BY_ACTIVITY,
+  FILTER_POPU_APLH,
   GET_ALL_ACTIVITIES,
-  FILTER_BY_REGION,
-  ORDER_BY_NAME,
-  FILTER_POPULATION
+  POST_ACTIVITY,
 } from '../actions/actionTypes'
 
 const initialState = {
+  activities: [],
   countries: [],
-  allCountries: [],
-  allActivities: [],
-  detail: []
+  filters: [],
+  detail: [],
 }
 
-function reducer(state = initialState, { type, payload }) {
-  switch (type) {
+function rootReducer(state = initialState, action) {
+  //action contiene {type, payload}
+  switch (action.type) {
     case GET_ALL_COUNTRIES:
       return {
         ...state,
-        allCountries: payload,
-        countries: payload
+        countries: action.payload,
+        filters: action.payload,
       }
-    case SEARCH_COUNTRIES:
+
+    case COUNTRY_DETAIL:
       return {
         ...state,
-        countries: payload,
+        //   countries: action.payload,
+        detail: action.payload,
       }
-    case GET_DETAILS:
+
+    case COUNTRY_BY_NAME:
       return {
         ...state,
-        countryDetails: payload,
+        filters: action.payload,
       }
+
+    case COUNTRY_BY_CONTINENT:
+      const filteredContinent =
+        action.payload === 'All'
+          ? state.countries
+          : state.countries.filter(c => c.continents === action.payload)
+      return {
+        ...state,
+        filters: filteredContinent,
+      }
+
+    case COUNTRY_BY_ACTIVITY:
+      const filteredActivity =
+        action.payload === 'All'
+          ? state.countries
+          : state.countries.filter(c =>
+              c.Activities.map(e => e.name).includes(action.payload)
+            )
+      console.log(filteredActivity)
+      return {
+        ...state,
+        filters: filteredActivity,
+      }
+
+    case FILTER_POPU_APLH:
+      let sorts
+      if (action.payload === 'All') sorts = state.countries
+      if (action.payload === 'A-Z') {
+        //alpha
+        sorts = state.filters.sort((a, b) => {
+          if (a.name > b.name) return 1
+          if (a.name < b.name) return -1
+          return 0
+        })
+      }
+      if (action.payload === 'Z-A') {
+        sorts = state.filters.sort((a, b) => {
+          if (a.name < b.name) return 1
+          if (a.name > b.name) return -1
+          return 0
+        })
+      }
+      if (action.payload === 'ASC') {
+        //num
+        sorts = state.filters.sort((a, b) => {
+          return a.population - b.population
+        })
+      }
+      if (action.payload === 'DESC') {
+        sorts = state.filters.sort((a, b) => {
+          return b.population - a.population
+        })
+      }
+      return {
+        ...state,
+        filters: sorts,
+      }
+
     case GET_ALL_ACTIVITIES:
       return {
         ...state,
-        allActivities: payload,
+        activities: action.payload,
       }
 
-    case FILTER_BY_REGION:
-      const allCountries = state.allCountries
-      const statusFiltered = 
-      payload === 'All'
-      ? allCountries
-      :allCountries.filter(el => el.continent === payload)
+    case POST_ACTIVITY:
       return {
         ...state,
-        countries: statusFiltered,
-      }
-    case FILTER_POPULATION:
-      let sorted;
-      if (payload === 'asc') { //num
-        sorted = state.filters.sort((a, b) => {
-            return a.population - b.population;
-        })
-    }
-    if (payload === 'desc') {
-        sorted = state.filters.sort((a, b) => {
-            return b.population - a.population;
-        })
-    }
-    return {
-        ...state,
-        filters: sorted
-    };
-
-    case ORDER_BY_NAME:
-      let sortedArr =
-        payload === 'asc'
-          ? state.countries.sort(function (a, b) {
-              if (a.name > b.name) {
-                return 1
-              }
-              if (b.name > a.name) {
-                return -1
-              }
-              return 0
-            })
-          : state.countries.sort(function (a, b) {
-              if (a.name > b.name) {
-                return -1
-              }
-              return 0
-            })
-      return {
-        ...state,
-        countries: sortedArr,
       }
 
     default:
@@ -94,4 +112,4 @@ function reducer(state = initialState, { type, payload }) {
   }
 }
 
-export default reducer
+export default rootReducer

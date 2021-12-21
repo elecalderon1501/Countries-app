@@ -1,36 +1,31 @@
 import './App.css'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import Landing from './views/Landing'
-import Home from './views/Home'
-import { CreateActivity } from './views/CreateActivity'
-import { CountryDetail } from './views/CountryDetail'
 import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
-import { getAllCountries } from './redux/actions'
-import { Nav } from './components'
+import { Route, Routes, BrowserRouter as Router } from 'react-router-dom'
+/*---------------components--------------*/
+import Landing from './components/Landing/Landing'
+import Home from './components/Home/Home'
+import CountryDetail from './components/CountryDetail/CountryDetail'
+import CreateActivity from './components/CreateActivity/CreateActivity'
+/*--------------actions-------------*/
+import { getAllCountries, getAllActivities } from './redux/actions/index'
 
 function App() {
   const dispatch = useDispatch()
-
   useEffect(() => {
     dispatch(getAllCountries())
-    // dispatch(getAllActivities())
+    dispatch(getAllActivities())
   }, [dispatch])
-
+  /*--------------routes-----------*/
   return (
-    <>
-    <Nav/>
     <Router>
-      <div className="App">
-        <Routes>
-          <Route exact path="/" element={<Landing />} />
-          <Route exact path="/home" element={<Home />} />
-          <Route path="/activity" element={<CreateActivity />} />
-          <Route path="/home/:id" element={<CountryDetail />} />
-        </Routes>
-      </div>
+      <Routes>
+        <Route exact path="/" element={<Landing />} />
+        <Route exact path="/home" element={<Home />} />
+        <Route exact path="/countries/:id" element={<CountryDetail />} />
+        <Route path="/activity" element={<CreateActivity />} />
+      </Routes>
     </Router>
-    </>
   )
 }
 

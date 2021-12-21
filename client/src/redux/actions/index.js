@@ -1,105 +1,99 @@
-import axios from 'axios'
 import {
   GET_ALL_COUNTRIES,
-  SEARCH_COUNTRIES,
-  GET_DETAILS,
-  CREATE_ACTIVITY,
+  COUNTRY_DETAIL,
+  COUNTRY_BY_NAME,
+  COUNTRY_BY_CONTINENT,
+  COUNTRY_BY_ACTIVITY,
+  FILTER_POPU_APLH,
   GET_ALL_ACTIVITIES,
-  // FILTER_BY_ACTIVITIES,
-  FILTER_BY_REGION,
-  FILTER_BY_POPULATION,
-  ORDER_BY_NAME,
 } from './actionTypes'
+import axios from 'axios'
 
 export function getAllCountries() {
   return async function (dispatch) {
     try {
-      let allCountries = await axios.get('http://localhost:3001/countries')
+      const countries = await axios.get('http://localhost:3001/countries')
       return dispatch({
         type: GET_ALL_COUNTRIES,
-        payload: allCountries.data,
+        payload: countries.data,
       })
-    } catch (error) {
-      console.log(error)
+    } catch (err) {
+      console.log(err)
     }
   }
 }
 
-export function searchCountries(name) {
+export function countryByName(name) {
   return async function (dispatch) {
     try {
-      let nameCountry = await axios.get(
-        'http://localhost:3001/countries?name=' + name
+      const country = await axios.get(
+        `http://localhost:3001/countries?name=${name}`
       )
       return dispatch({
-        type: SEARCH_COUNTRIES,
-        payload: nameCountry.data,
+        type: COUNTRY_BY_NAME,
+        payload: country.data,
       })
-    } catch (error) {
-      console.log(error)
+    } catch (err) {
+      console.log(err)
     }
   }
 }
 
-export function getDetails(id) {
+export function countryDetail(id) {
   return async function (dispatch) {
     try {
-      let idCountry = await axios.get('http://localhost:3001/countries/' + id)
+      const details = await axios.get(`http://localhost:3001/countries/${id}`)
       return dispatch({
-        type: GET_DETAILS,
-        payload: idCountry.data,
+        type: COUNTRY_DETAIL,
+        payload: details.data,
       })
-    } catch (error) {
-      console.log(error)
+    } catch (err) {
+      alert('Pais no encontrado')
     }
   }
 }
 
-export function createActivity(obj) {
+export function postActivity(payload) {
   return async function (dispatch) {
-    let activityCreated = await axios.post(
+    const newActivity = await axios.post(
       'http://localhost:3001/activity',
-      obj
+      payload
     )
-    return dispatch({
-      type: CREATE_ACTIVITY,
-      payload: activityCreated.data,
-    })
+    return newActivity
   }
 }
 
 export function getAllActivities() {
   return async function (dispatch) {
     try {
-      const allActivities = await axios.get('http://localhost:3001/activity')
+      const activity = await axios.get('http://localhost:3001/activity')
       return dispatch({
         type: GET_ALL_ACTIVITIES,
-        payload: allActivities.data,
+        payload: activity.data,
       })
-    } catch (error) {
-      console.log(error)
+    } catch (err) {
+      console.log(err)
     }
   }
 }
 
-export function filterByRegion(payload) {
-  console.log(payload)
+export function countryByContinent(payload) {
   return {
-    type: FILTER_BY_REGION,
+    type: COUNTRY_BY_CONTINENT,
     payload,
   }
 }
 
-export function orderByName(payload) {
+export function countryByActivity(payload) {
   return {
-    type: ORDER_BY_NAME,
+    type: COUNTRY_BY_ACTIVITY,
     payload,
   }
 }
 
-export function filterByPopulation(payload) {
+export function filterPopuAlph(payload) {
   return {
-    type: FILTER_BY_POPULATION,
-    payload
+    type: FILTER_POPU_APLH,
+    payload,
   }
 }
