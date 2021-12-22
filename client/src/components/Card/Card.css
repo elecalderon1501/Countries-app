@@ -1,71 +1,127 @@
-:root {
-    --color1: #9aadbf;
-    --color2: #6d98ba;
-    --color3: #d3b99f;
-    --color4: #c17767;
-    --color5: #7a7265;
-  }
+/* :root {
+  --color1: #9aadbf;
+  --color2: #6d98ba;
+  --color3: #d3b99f;
+  --color4: #c17767;
+  --color5: #7a7265;
+} */
 
 .All {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    align-content: center;
-    padding: 3px;
-    height: 255px;
-    width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  padding: 3px;
+  height: 255px;
+  width: 100vw;
 }
 
 .Container {
-    display: flex;
-    height: 100%;
-    width: 630px;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    background-color: rebeccapurple;
-    border-radius: 10px;
-    padding: 3px
+  display: flex;
+  height: 100%;
+  width: 630px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  background-color: white;
+  border-radius: 10px;
+  padding: 3px;
 }
 
 .ImageContainer {
-    display: flex;
-    width: 100px;
-    height: 80px;
-    justify-content: center;
-    padding: 3px;
+  display: flex;
+  width: 100px;
+  height: 80px;
+  justify-content: center;
+  padding: 3px;
 }
 
 .Image {
-    display: flex;
-    width: 155px;
+  display: flex;
+  width: 155px;
 }
 
 .TextContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    color: gold;
-    font-size: 13px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--color1);
+  font-size: 13px;
 }
 
 .Name {
-    display: flex;
-    height: 30px;
+  display: flex;
+  height: 30px;
 }
 
 .Link {
-    display: flex;
-    color: gold;
-    font-size: large;
-    flex-direction: column;
-    justify-content: flex-start;
-
+  display: flex;
+  color: var(--color1);
+  font-size: large;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 .Continents {
-    display: flex;
+  display: flex;
+}
+
+/* .contenedor{
+    display:inline-flex;
+    flex-direction: column;
+    position: relative;
+    align-content: center;
+    width: 300px;
+    height: 420px;
+    background-color:#2B2840 ;
+    color: white;
+    border-radius: 15px;
+    margin: 30px ;  
+    font-family: Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+    opacity: 0.8;
+    animation-name: cambioColor;
+    animation-duration: 3s;
+    
+    
+}
+@keyframes cambioColor {
+    
+    25%{
+        background-color:#3e8797;
+    }
+    50%{
+        background-color: #256d7e;
+    }
+    75%{
+        background-color:#0F4C59 ;
+    }
+    100%{
+        background-color: #2B2840;
+    }
 
 }
+    
+   
+
+
+.contenedor h4{
+    font-size: 32px;
+    padding: 0%;
+}
+.contenedor h6{
+    color:#66D9C4;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 0%;
+    margin-top: 0%;
+
+}
+.contenedor img{
+    width: 120px;
+    height: 120px;
+    position:absolute;
+    
+} */

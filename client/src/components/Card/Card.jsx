@@ -8,11 +8,15 @@ export default function Card({ id, flags, name, continents }) {
       <div className="All">
         <div className="Container" key={id}>
           <div className="ImageContainer">
+          <Link className="Link" to={`/countries/${id}`}>
             <img className="Image" src={flags} alt="flag" />
+            </Link>
           </div>
           <div className="TextContainer">
             <h1 className="Name">
+            <Link className="Link" to={`/countries/${id}`}>
               {name}
+              </Link>
               <Link className="Link" to={`/countries/${id}`}>
                 ({id}){' '}
               </Link>{' '}
