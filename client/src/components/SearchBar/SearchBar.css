@@ -1,10 +1,10 @@
-/* :root {
+:root {
   --color1: #9aadbf;
   --color2: #6d98ba;
   --color3: #d3b99f;
   --color4: #c17767;
   --color5: #7a7265;
-} */
+}
 
 .Container {
   display: flex;

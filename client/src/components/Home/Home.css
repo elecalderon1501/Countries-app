@@ -1,10 +1,12 @@
-/* :root {
+:root {
   --color1: #9aadbf;
   --color2: #6d98ba;
   --color3: #d3b99f;
   --color4: #76c893;
   --color5: #7a7265;
-} */
+}
+
+
 .navBar {
   display: inline-flex;
 }
@@ -28,6 +30,7 @@
 
 .BackGround {
   display: flex;
+  flex-direction: column;
   background-color: white;
   flex-direction: column;
   justify-content: center;
@@ -79,7 +82,7 @@ button:hover {
   justify-content: center;
 }
 
-.CardsBackground {
+.CardBackground {
   display: flex;
   flex-direction: column;
   align-items: center;

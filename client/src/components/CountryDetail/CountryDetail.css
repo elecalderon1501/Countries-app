@@ -5,7 +5,9 @@
     --color4: #c17767;
     --color5: #7a7265;
   }
-
+*{
+    background-color: var(--color5);
+}
 .BackGround {
     background-color: var(--color5);
     display: flex;
@@ -17,6 +19,8 @@
 }
 
 .Card {
+    background-color: var(--color5);
+
     display: flex;
     width: 500px;
     flex-direction: column;

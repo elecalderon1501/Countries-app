@@ -4,7 +4,7 @@ import {
   COUNTRY_BY_NAME,
   COUNTRY_BY_CONTINENT,
   COUNTRY_BY_ACTIVITY,
-  FILTER_POPU_APLH,
+  FILTER_POPU,
   GET_ALL_ACTIVITIES,
   POST_ACTIVITY,
 } from '../actions/actionTypes'
@@ -29,7 +29,7 @@ function rootReducer(state = initialState, action) {
     case COUNTRY_DETAIL:
       return {
         ...state,
-        //   countries: action.payload,
+        countries: action.payload,
         detail: action.payload,
       }
 
@@ -40,12 +40,12 @@ function rootReducer(state = initialState, action) {
       }
 
     case COUNTRY_BY_CONTINENT:
-      let allCountries = state.country
+      const countries = state.countries
       const filteredContinent =
         action.payload === 'All'
-          ? allCountries
-          : allCountries.filter(c => {
-              return c.continents.includes(action.payload)
+          ? countries
+          : countries.filter(c => {
+              return c.continent.includes(action.payload)
             })
       return {
         ...state,
@@ -56,8 +56,10 @@ function rootReducer(state = initialState, action) {
       const filteredActivity =
         action.payload === 'All'
           ? state.countries
-          : state.countries.filter(c =>
-              c.Activities.map(e => e.name).includes(action.payload)
+          : state.countries.filter(
+              c =>
+                c.Activities &&
+                c.Activities.filter(a => a.name === action.payload).length
             )
       console.log(filteredActivity)
       return {
@@ -65,7 +67,7 @@ function rootReducer(state = initialState, action) {
         filters: filteredActivity,
       }
 
-    case FILTER_POPU_APLH:
+    case FILTER_POPU:
       let sorts
       if (action.payload === 'All') sorts = state.countries
       if (action.payload === 'A-Z') {

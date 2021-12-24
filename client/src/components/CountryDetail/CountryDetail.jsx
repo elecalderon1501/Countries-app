@@ -19,7 +19,7 @@ export default function CountryDetail() {
         <div className="BackGround">
           <div className="Card">
             <div className="ImageContainer">
-              <img className="Image" src={detail.flag} alt="image_flag" />
+              <img className="Image" src={detail.flags} alt="image_flag" />
             </div>
 
             <div className="DetailContainer">

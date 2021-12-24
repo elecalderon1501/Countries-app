@@ -6,12 +6,12 @@
     --color5: #7a7265;
   }
 
-/* .Container {
+.Container {
     display: flex;
     width: 1vw;
     height: 2px;
 
-} */
+}
 
 .Buttons {
     background-color: var(--color5);

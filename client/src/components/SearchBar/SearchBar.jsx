@@ -23,7 +23,7 @@ export default function SearchBar() {
       <div className="Container">
         <input
           onChange={e => handleChange(e)}
-          placeholder="Country´s Name..."
+          placeholder="Name..."
           value={name}
           type="text"
         />

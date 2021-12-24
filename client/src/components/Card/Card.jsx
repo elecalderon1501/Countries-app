@@ -2,7 +2,7 @@ import './Card.css'
 import { Link } from 'react-router-dom'
 import React from 'react'
 
-export default function Card({ id, flags, name, continents }) {
+export default function Card({ id, name, flags, continents }) {
   return (
     <>
       <div className="All">

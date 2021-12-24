@@ -1,11 +1,13 @@
-/* :root {
+:root {
   --color1: #9aadbf;
   --color2: #6d98ba;
   --color3: #d3b99f;
   --color4: #c17767;
   --color5: #7a7265;
-} */
-
+}
+* {
+  background-color: white;
+}
 .All {
   display: flex;
   flex-direction: column;
@@ -68,60 +70,3 @@
   display: flex;
 }
 
-/* .contenedor{
-    display:inline-flex;
-    flex-direction: column;
-    position: relative;
-    align-content: center;
-    width: 300px;
-    height: 420px;
-    background-color:#2B2840 ;
-    color: white;
-    border-radius: 15px;
-    margin: 30px ;  
-    font-family: Geneva, Tahoma, sans-serif;
-    font-size: 20px;
-    opacity: 0.8;
-    animation-name: cambioColor;
-    animation-duration: 3s;
-    
-    
-}
-@keyframes cambioColor {
-    
-    25%{
-        background-color:#3e8797;
-    }
-    50%{
-        background-color: #256d7e;
-    }
-    75%{
-        background-color:#0F4C59 ;
-    }
-    100%{
-        background-color: #2B2840;
-    }
-
-}
-    
-   
-
-
-.contenedor h4{
-    font-size: 32px;
-    padding: 0%;
-}
-.contenedor h6{
-    color:#66D9C4;
-    font-weight: bold;
-    font-size: 16px;
-    padding: 0%;
-    margin-top: 0%;
-
-}
-.contenedor img{
-    width: 120px;
-    height: 120px;
-    position:absolute;
-    
-} */
