@@ -55,9 +55,6 @@ export default function Home() {
       <Nav />
       <div>
         <FilterOrder />
-      </div>
-
-      <div>
         <SearchBar />
       </div>
 
@@ -66,7 +63,9 @@ export default function Home() {
         {console.log(currentCountries)}
       </div>
 
-      <ul className="Pagination">{renderPages}</ul>
+      <div>
+        <ul className="Pagination">{renderPages}</ul>
+      </div>
 
       <div className="CardsBackground">
         {/* <Cards countries={currentCountries} /> */}

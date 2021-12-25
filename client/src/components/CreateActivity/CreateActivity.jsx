@@ -61,19 +61,7 @@ export default function CreateActivity() {
 
   return (
     <>
-
-<div className='navBar'>
-      <Link className="Link" to="/">
-        <h4>LANDING PAGE</h4>
-      </Link>
-      <Link className="Link" to="/home">
-        <h4>HOME PAGE</h4>
-      </Link>
-      <Link className="Link" to="/activity">
-        <h4>ADD TOURIST ACTIVITIES</h4>
-      </Link>
-      </div>
-
+      
       <section className="Background">
         <form className="Card">
           <h2 className="Title">ADD A TOURIST ACTIVITY</h2>
@@ -172,7 +160,7 @@ export default function CreateActivity() {
               {activity.countries.map(c => `~${c}`)}
             </li>
           </ul>
-          <div className="ButtonContainer" >
+          <div className="ButtonContainer">
             <Link to="/home" style={{ textDecoration: 'none' }}>
               <button>Back to Home</button>
             </Link>

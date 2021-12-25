@@ -1,4 +1,5 @@
 import React from 'react'
+import '../Home/FilterOrder.css'
 import { useDispatch, useSelector } from 'react-redux'
 import {
   countryByContinent,
@@ -30,7 +31,7 @@ export default function FilterOrder() {
 
   return (
     <div className="BackGround">
-      <div className="FilterContainer">
+      <div className="FilterContinent">
         <select
           onChange={e => {
             handleCountryByContinent(e)
@@ -45,7 +46,9 @@ export default function FilterOrder() {
           <option value="South America">South America</option>
           <option value="Antarctica">Antarctica</option>
         </select>
+      </div>
 
+      <div className="FilterPopu">
         <select onChange={handleFilterPopu}>
           <option value="All">Sorts</option>
           <option value="A-Z">Countries A to Z</option>
@@ -53,15 +56,17 @@ export default function FilterOrder() {
           <option value="ASC">Ascendant Population</option>
           <option value="DESC">Descendant Population</option>
         </select>
+      </div>
 
-        <select name="activity" onChange={handleCountryByActivity}>
-          <option value="">All</option>
-          {activities?.map(el => (
-            <option key={el.name} value={el.name}>
-              {el.name}
-            </option>
-          ))}
-        </select>
+      <div className='FilterActivity'>
+      <select name="activity" onChange={handleCountryByActivity}>
+        <option value="">All</option>
+        {activities?.map(el => (
+          <option key={el.name} value={el.name}>
+            {el.name}
+          </option>
+        ))}
+      </select>
       </div>
     </div>
   )

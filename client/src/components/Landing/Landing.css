@@ -1,56 +1,49 @@
 :root {
-  --color1: #9aadbf;
-  --color2: #6d98ba;
-  --color3: #d3b99f;
-  --color4: #c17767;
-  --color5: #7b7367;
+  --color1: #0396a6;
+  --color2: #026873;
+  --color3: #82d0d9;
+  --color4: #535925;
+  --color5: #bfba75;
 }
-/* body {
-  background-color: white;
-} */
 
 .BackGroundLanding {
-  background-image: url('../../img/planet-earth-and-blue-human-eye.jpg');
+  background-image: url('../../img/planet-eye.jpg');
   background-repeat: no-repeat;
+  display: flex;
   background-size: cover;
-  background-attachment: fixed;
-  background-position: center;
-  background-color: white;
-  margin-top: 0%;
-  padding: 0%;
   width: 100%;
   height: 100%;
-  position: fixed;
+  min-height: 100vh;
 }
 
-.Button {
-  background-color: var(--color5);
+.Container {
   display: flex;
-  flex-direction: row;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.button {
+  width: 30%;
+  height: 10%;
+  display: flex;
   justify-content: center;
   align-items: center;
-  text-decoration-line: none;
-}
 
-.Text:hover {
-  background-color: var(--color3);
   opacity: 0.8;
-  color: white;
-  text-decoration: none;
 }
 
 .Text {
-  background-color: var(--color5);
-  height: 80px;
   width: 300px;
-  border-radius: 48px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: var(--color2);
-  font-size: 40px;
+  font-size: 48px;
+  margin-top: 40%;
+  background-color: #026873;
+  color: #bfba75;
+  border-radius: 20px;
+  text-align: center;
   opacity: 0.8;
-  margin-top: 3%;
-  margin-left: 78%;
+}
+.Text:hover {
+  background-color: #535925;
 }

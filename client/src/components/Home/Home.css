@@ -1,91 +1,14 @@
 :root {
-  --color1: #9aadbf;
-  --color2: #6d98ba;
-  --color3: #d3b99f;
-  --color4: #76c893;
-  --color5: #7a7265;
-}
+    --color1: #0396A6;
+    --color2: #026873;
+    --color3: #82D0D9;
+    --color4: #535925;
+    --color5: #BFBA75;
+  }
 
-
-.navBar {
-  display: inline-flex;
-}
-
-.Link {
-  padding: 35px;
-}
-
-.Pagination {
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
-  justify-content: space-evenly;
-  list-style: none;
-  padding-left: 30px;
-  padding-right: 30px;
-  flex-wrap: nowrap;
-  width: 90px;
-}
-
-.BackGround {
-  display: flex;
-  flex-direction: column;
-  background-color: white;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  width: 100vw;
-}
-
-.FilterContainer {
-  display: flex;
-  width: 100%;
-  flex-direction: row;
-  justify-content: center;
-  padding: 5px;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-}
-
-select {
-  color: var(--color3);
-  background-color: white;
-  height: 30px;
-  width: 210px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: large;
-  border-radius: 5px;
-}
-
-input {
-  background-color: var(--color1);
-}
-
-button {
-  color: var(--color3);
-  background-color: var(--color2);
-  font-size: large;
-  border-radius: 5px;
-}
-
-button:hover {
-  color: var(--color5);
-  background-color: var(--color3);
-}
-
-.RefreshButton {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  justify-content: center;
-}
-
-.CardBackground {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: white;
-  flex-wrap: wrap;
-}
+  body{
+      background-image: url('../../img/mapamundi-transparente-azul.png');
+      background-repeat: no-repeat;
+      background-size:auto;
+      background-color: var(--color2);
+  }
