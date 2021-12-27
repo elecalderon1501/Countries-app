@@ -15,6 +15,11 @@ export default function CountryDetail() {
 
   return (
     <>
+    <div>
+    <Link className="Link" to="/home">
+            <button>Home Page</button>
+          </Link>
+    </div>
       {detail ? (
         <div className="BackGround">
           <div className="Card">
@@ -26,7 +31,7 @@ export default function CountryDetail() {
               <h2 padding="0px">
                 {detail.name}({detail.id})
               </h2>
-              <h4 padding="0px">Continent: {detail.continents} </h4>
+              <h4 padding="0px">Continent: {detail.continent} </h4>
               <h4 padding="0px">
                 {' '}
                 Subregion: {detail.subregion ? ' ' + detail.subregion : '---'}
@@ -49,13 +54,12 @@ export default function CountryDetail() {
               </div>
             </div>
           </div>
-          <Link className="Link" to="/home">
-            <button>Home Page</button>
-          </Link>
+          
         </div>
       ) : (
         <span>Country Not Found</span>
       )}
     </>
+    
   )
 }

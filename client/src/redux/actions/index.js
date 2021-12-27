@@ -7,6 +7,7 @@ import {
   FILTER_POPU,
   GET_ALL_ACTIVITIES,
   POST_ACTIVITY,
+  ORDER_BY_NAME
 } from "./actionTypes";
 import axios from 'axios'
 
@@ -104,3 +105,10 @@ export function filterPopu(payload) {
       payload
   }
 };
+
+export function order_by_name(payload){
+    return{
+        type: ORDER_BY_NAME,
+        payload
+    }
+}

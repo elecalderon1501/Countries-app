@@ -1,7 +1,42 @@
 :root {
-  --color1: #0396A6;
+  --color1: #0396a6;
   --color2: #026873;
-  --color3: #82D0D9;
+  --color3: #82d0d9;
   --color4: #535925;
-  --color5: #BFBA75;
+  --color5: #bfba75;
+}
+
+.Container {
+  display: inline;
+  width: 50%;
+  height: 50%;
+  margin-left: 39%;
+
+  padding: 30px;
+}
+
+input {
+  border-radius: 5px;
+  border: 50px;
+  color: var(--color4);
+  font-size: 16px;
+  width: 20%;
+  height: 30px;
+  box-shadow: 2px 2px 5px black;
+}
+
+.searchButton {
+  border: 50px;
+  width: 10%;
+  height: 5vh;
+  border-radius: 25px;
+  margin-left: 10px;
+  background-color: var(--color5);
+  color: var(--color2);
+  font-size: 18px;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px black;
+
+  box-shadow: 2px 2px 5px black;
+  cursor: pointer;
 }

@@ -1,8 +1,24 @@
 :root {
-  --color1: #9aadbf;
-  --color2: #6d98ba;
-  --color3: #d3b99f;
-  --color4: #76c893;
-  --color5: #7a7265;
+  --color1: #0396a6;
+  --color2: #026873;
+  --color3: #82d0d9;
+  --color4: #535925;
+  --color5: #bfba75;
 }
 
+.Background{
+  display: flex;
+  width: 100vh;
+  align-items: center;
+  align-content: center;
+  margin-top: 10vh;
+  margin-left: 40vh;
+}
+
+.Title{
+  text-align: center;
+}
+
+.Card input{
+  width: 50vh
+}

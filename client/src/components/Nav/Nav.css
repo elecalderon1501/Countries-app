@@ -12,9 +12,9 @@
   font-size: 32px;
 }
 
-.Link {
+.LinkNav {
   padding: 20px;
-  color: var(--color4);
+  color: var(--color5);
   text-decoration: none;
   text-shadow: 2px 2px 5px black;
 }

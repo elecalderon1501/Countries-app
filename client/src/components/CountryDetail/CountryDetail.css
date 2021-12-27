@@ -1,7 +1,36 @@
 :root {
-    --color1: #9aadbf;
-    --color2: #6d98ba;
-    --color3: #d3b99f;
-    --color4: #c17767;
-    --color5: #7a7265;
-  }
+  --color1: #0396a6;
+  --color2: #026873;
+  --color3: #82d0d9;
+  --color4: #535925;
+  --color5: #bfba75;
+}
+
+.BackGround {
+  display: flex;
+  margin-top: 3%;
+}
+
+.Link button {
+  border: 50px;
+  width: 20vh;
+  height: 5vh;
+  margin-top: 5vh;
+  border-radius: 25px;
+  background-color: var(--color5);
+  color: var(--color4);
+  font-size: 18px;
+  font-size: 18px;
+  font-weight: bold;  
+  text-shadow: 1px 1px 2px black;
+  box-shadow: 2px 2px 5px black;
+  cursor: pointer;
+}
+
+.Card {
+  background-color: white;
+  color: var(--color4);
+  opacity: 0.9;
+  border-radius: 20px;
+  text-align: center;
+}

@@ -7,6 +7,7 @@ import {
   FILTER_POPU,
   GET_ALL_ACTIVITIES,
   POST_ACTIVITY,
+  ORDER_BY_NAME
 } from '../actions/actionTypes'
 
 const initialState = {
@@ -67,39 +68,38 @@ function rootReducer(state = initialState, action) {
         filters: filteredActivity,
       }
 
-    case FILTER_POPU:
-      let sorts
-      if (action.payload === 'All') sorts = state.countries
-      if (action.payload === 'A-Z') {
-        //alpha
-        sorts = state.filters.sort((a, b) => {
-          if (a.name > b.name) return 1
-          if (a.name < b.name) return -1
-          return 0
-        })
-      }
-      if (action.payload === 'Z-A') {
-        sorts = state.filters.sort((a, b) => {
-          if (a.name < b.name) return 1
-          if (a.name > b.name) return -1
-          return 0
-        })
-      }
-      if (action.payload === 'ASC') {
-        //num
-        sorts = state.filters.sort((a, b) => {
-          return a.population - b.population
-        })
-      }
-      if (action.payload === 'DESC') {
-        sorts = state.filters.sort((a, b) => {
-          return b.population - a.population
-        })
-      }
-      return {
+    case FILTER_POPU:      
+      if (action.payload === 'ASC') 
+        return{
         ...state,
-        filters: sorts,
+        filters : [...state.filters].sort((a, b) => 
+           a.population > b.population? 1 : -1        
+          ),
+      };
+      return{
+        ...state,
+        filters: [...state.filters].sort((a,b) =>
+        a.population > b.population ? -1 : 1
+        )
       }
+      
+
+      case ORDER_BY_NAME:{
+        if (action.payload === 'A-Z')
+          return{
+            ...state,
+            filters: [...state.filters].sort((a, b) =>
+            a.name > b.name ? 1:-1
+            )
+          }
+          return{
+            ...state,
+            filters: [...state.filters].sort((a,b) =>
+            a.name > b.name ? -1: 1
+            ),
+          };
+      }
+
 
     case GET_ALL_ACTIVITIES:
       return {

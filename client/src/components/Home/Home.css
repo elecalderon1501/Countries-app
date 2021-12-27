@@ -1,14 +1,57 @@
 :root {
-    --color1: #0396A6;
-    --color2: #026873;
-    --color3: #82D0D9;
-    --color4: #535925;
-    --color5: #BFBA75;
-  }
+  --color1: #0396a6;
+  --color2: #026873;
+  --color3: #82d0d9;
+  --color4: #535925;
+  --color5: #bfba75;
+  --color6: #b6bfc0;
+}
 
-  body{
-      background-image: url('../../img/mapamundi-transparente-azul.png');
-      background-repeat: no-repeat;
-      background-size:auto;
-      background-color: var(--color2);
-  }
+body {
+  background-image: url('../../img/mapamundi-transparente-azul.png');
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-color: var(--color6);
+}
+
+.RefreshButton {
+  align-items: center;
+  align-content: center;
+}
+.RefreshButton button {
+  border: 50px;
+  width: 25vh;
+  height: 5vh;
+  border-radius: 25px;
+  margin-left: 45%;
+  background-color: var(--color5);
+  color: var(--color2);
+  font-size: 18px;
+  font-weight: bold;  
+  text-shadow: 1px 1px 2px black;
+  box-shadow: 2px 2px 5px black;
+  cursor: pointer;
+}
+
+.Pagination {
+  display: flex;
+  list-style: none;
+  justify-content:center;
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+.Pagination button {
+  width: 5vh;
+  padding: 1px;
+  margin: 5px;
+  border: 2px solid var(--color2);
+  border-radius: 5px;
+  color: white;
+  background-color: var(--color1);
+  font-size: 16px;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px black;
+  box-shadow: 2px 2px 5px black;
+  cursor: pointer;
+}

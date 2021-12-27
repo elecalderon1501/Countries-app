@@ -13,7 +13,7 @@ export default function Home() {
 
   //pagination--------------------------
   const [currentPage, setCurrentPage] = useState(1)
-  const [countriesPage] = useState(9)
+  const [countriesPage] = useState(10)
 
   let indexOfLastCountry = currentPage * countriesPage //1*9
   let indexOfFirstCountry = indexOfLastCountry - countriesPage //9-9
@@ -53,16 +53,14 @@ export default function Home() {
   return (
     <>
       <Nav />
-      <div>
-        <FilterOrder />
-        <SearchBar />
-      </div>
-
+      <SearchBar />
+      <FilterOrder />
+      <br />
       <div className="RefreshButton">
         <button onClick={e => handleClick(e)}>Refresh Country</button>
         {console.log(currentCountries)}
       </div>
-
+      <br />
       <div>
         <ul className="Pagination">{renderPages}</ul>
       </div>

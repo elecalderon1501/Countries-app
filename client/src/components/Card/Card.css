@@ -1,9 +1,36 @@
 :root {
-  --color1: #9aadbf;
-  --color2: #6d98ba;
-  --color3: #d3b99f;
-  --color4: #c17767;
-  --color5: #7a7265;
+  --color1: #0396a6;
+  --color2: #026873;
+  --color3: #82d0d9;
+  --color4: #535925;
+  --color5: #bfba75;
 }
 
+.AllCard {
+  margin: 2vh;
+  display: inline-table;
+  background-color: white;
+  width: 30vh;
+  height: 35vh;
+  border-radius: 3%;
+  opacity: 0.8;
+  padding: 1px;
+  box-shadow: 2px 2px 5px black;
+  align-items: center;
+  align-content: center;
+}
+.Container {
+  text-align: center;
+}
 
+.LinkCard {
+  color: var(--color2);
+  text-shadow: grey;
+  text-decoration: none;
+  font-size: 18px;
+  padding-top: 5vh;
+}
+.ImageCard {
+  width: 25vh;
+  height: 20vh;
+}

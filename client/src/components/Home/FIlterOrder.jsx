@@ -1,42 +1,53 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import '../Home/FilterOrder.css'
 import { useDispatch, useSelector } from 'react-redux'
 import {
+  getAllCountries,
+  getAllActivities,
   countryByContinent,
   countryByActivity,
   filterPopu,
+  order_by_name,
 } from '../../redux/actions/index'
 
 export default function FilterOrder() {
   const dispatch = useDispatch()
 
   const activities = useSelector(state => state.activities)
+  const [, setOrden] = useState('')
+
+  useEffect(() => {
+    dispatch(getAllCountries())
+    dispatch(getAllActivities())
+  }, [dispatch])
 
   function handleCountryByContinent(e) {
     dispatch(countryByContinent(e.target.value))
-    // setSort(e.target.value)
+    setOrden(e.target.value)
   }
 
   function handleCountryByActivity(e) {
     e.preventDefault()
     dispatch(countryByActivity(e.target.value))
-    // setSort(e.target.value)
+    setOrden(e.target.value)
   }
 
   function handleFilterPopu(e) {
     e.preventDefault()
     dispatch(filterPopu(e.target.value))
-    // setSort(e.target.value)
+    setOrden(e.target.value)
+  }
+
+  function handleFilterName(e) {
+    e.preventDefault()
+    dispatch(order_by_name(e.target.value))
+    setOrden(e.target.value)
   }
 
   return (
     <div className="BackGround">
       <div className="FilterContinent">
-        <select
-          onChange={e => {
-            handleCountryByContinent(e)
-          }}
-        >
+        <select onChange={e => handleCountryByContinent(e)}>
           <option value="All">Filters By Continents</option>
           <option value="Africa">Africa</option>
           <option value="Asia">Asia</option>
@@ -49,24 +60,38 @@ export default function FilterOrder() {
       </div>
 
       <div className="FilterPopu">
-        <select onChange={handleFilterPopu}>
-          <option value="All">Sorts</option>
-          <option value="A-Z">Countries A to Z</option>
-          <option value="Z-A">Countries Z to A</option>
+        <select
+          onChange={e => {
+            handleFilterPopu(e)
+          }}
+        >
+          <option value="">Order by Popultation</option>
           <option value="ASC">Ascendant Population</option>
           <option value="DESC">Descendant Population</option>
         </select>
       </div>
 
-      <div className='FilterActivity'>
-      <select name="activity" onChange={handleCountryByActivity}>
-        <option value="">All</option>
-        {activities?.map(el => (
-          <option key={el.name} value={el.name}>
-            {el.name}
-          </option>
-        ))}
-      </select>
+      <div className="OrderName">
+        <select
+          onChange={e => {
+            handleFilterName(e)
+          }}
+        >
+          <option value="">Order by Name</option>
+          <option value="A-Z">Countries A to Z</option>
+          <option value="Z-A">Countries Z to A</option>
+        </select>
+      </div>
+
+      <div className="FilterActivity">
+        <select name="activity" onChange={handleCountryByActivity}>
+          <option value="">Filter By Activity</option>
+          {activities?.map(el => (
+            <option key={el.name} value={el.name}>
+              {el.name}
+            </option>
+          ))}
+        </select>
       </div>
     </div>
   )
