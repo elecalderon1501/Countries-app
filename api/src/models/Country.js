@@ -20,15 +20,7 @@ module.exports = sequelize => {
         allowNull: false,
       },
       continent: {
-        type: DataTypes.ENUM(
-          'North America',
-          'Asia',
-          'Africa',
-          'Europe',
-          'Oceania',
-          'Antarctica',
-          'South America'
-        ),
+        type: DataTypes.STRING,
         allowNull: false,
       },
       capital: {
