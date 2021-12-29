@@ -27,9 +27,9 @@ export default function FilterOrder() {
   }
 
   function handleCountryByActivity(e) {
-    e.preventDefault()
+    // e.preventDefault()
     dispatch(countryByActivity(e.target.value))
-    setOrden(e.target.value)
+    // setOrden(e.target.value)
   }
 
   function handleFilterPopu(e) {
@@ -72,11 +72,7 @@ export default function FilterOrder() {
       </div>
 
       <div className="OrderName">
-        <select
-          onChange={e => {
-            handleFilterName(e)
-          }}
-        >
+        <select onChange={e => {handleFilterName(e)}}>
           <option value="">Order by Name</option>
           <option value="A-Z">Countries A to Z</option>
           <option value="Z-A">Countries Z to A</option>
@@ -84,8 +80,8 @@ export default function FilterOrder() {
       </div>
 
       <div className="FilterActivity">
-        <select name="activity" onChange={handleCountryByActivity}>
-          <option value="">Filter By Activity</option>
+        <select  onChange= {e=>handleCountryByActivity(e)}>
+          <option >Filter By Activity</option>
           {activities?.map(el => (
             <option key={el.name} value={el.name}>
               {el.name}

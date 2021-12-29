@@ -31,9 +31,9 @@ conn.sync({ force: false }).then(async () => {
       return {
         id: el.cca3,
         name: el.name.common,
-        flags: el.flags.png ? el.flags.png : ' ', //el.flags.svg ???
-        continent: el.continents,
-        capital: el.capital ? el.capital : ' ',
+        flags: el.flags.png ? el.flags.png : ' ',
+        continent: el.continents[0],
+        capital: el.capital ? el.capital[0] : ' ',
         subregion: el.subregion,
         area: el.area,
         population: el.population,

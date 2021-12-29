@@ -60,7 +60,7 @@ export function postActivity(payload) {
       const newActivity = await axios.post('http://localhost:3001/activity', payload)
       return dispatch({
           type: POST_ACTIVITY,
-          payload: newActivity
+          payload: newActivity.data
       })
 
   }
