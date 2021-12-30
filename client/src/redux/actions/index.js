@@ -58,10 +58,7 @@ export function countryDetail(id) {
 export function postActivity(payload) {
   return async function (dispatch) {
       const newActivity = await axios.post('http://localhost:3001/activity', payload)
-      return dispatch({
-          type: POST_ACTIVITY,
-          payload: newActivity.data
-      })
+      return newActivity;       
 
   }
 }

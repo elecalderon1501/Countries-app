@@ -1,8 +1,26 @@
-import { getAllCountries, postActivity } from '../../redux/actions/index'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { getAllCountries, postActivity } from '../../redux/actions/index'
 import '../CreateActivity/CreateActivity.css'
+
+function validate(activity) {
+  let error = {}
+  if (!activity.name) {
+    error.name = 'Name Required'
+  } else if (!activity.difficulty) {
+    error.difficulty = 'Difficulty required'
+  } else if (!activity.duration) {
+    error.duration = 'Duration required'
+  } else if (!activity.season) {
+    error.season = 'Season required'
+  } else if (!activity.countries) {
+    error.countries = 'Country required'
+  }
+  return error
+}
+
+//----------------------------------------------------------
 
 export default function CreateActivity() {
   const dispatch = useDispatch()
@@ -18,7 +36,7 @@ export default function CreateActivity() {
     name: '',
     difficulty: '',
     duration: '',
-    season: '',
+    season: [],
     countries: [],
   })
 
@@ -26,154 +44,134 @@ export default function CreateActivity() {
     dispatch(getAllCountries())
   }, [dispatch])
 
+  //----------------------------------------------------------
   function handleSubmit(e) {
+    e.preventDefault()
     dispatch(postActivity(activity))
     setActivity({
       name: '',
       difficulty: '',
       duration: '',
-      season: '',
+      season: [],
       countries: [],
     })
     alert('Activity Created Succesfuly')
   }
+
   function handleChange(e) {
-    let name = e.target.name
-    let value = e.target.value
-    if (value === '') {
-      setError({ ...error, [name]: 'No se admite campo vacio' })
-    } else if ((name === 'name' || name === 'season') && /\d/.test(value)) {
-      setError({ ...error, [name]: 'Solo se admiten letras' })
-    } else if (name !== 'season' && name !== 'name' && isNaN(value))
-      setError({ ...error, [name]: 'Solo se admiten numeros' })
     setActivity({
       ...activity,
       [e.target.name]: e.target.value,
     })
+    setError(
+      validate({
+        ...activity,
+        [e.target.name]: e.target.value,
+      })
+    )
   }
 
   function handleSelect(e) {
     setActivity({
       ...activity,
       countries: [...activity.countries, e.target.value],
+      // me guarda en un arreglo todo lo que vaya seleccionando de select
     })
   }
 
+  function handleDelete(e) {
+    setActivity({
+      ...activity,
+      countries: activity.countries.filter(act => act !== e),
+    })
+  }
+  //------------------------------------------------------------------------
   return (
-    <>
-      <section className="Background">
-        <form className="Card">
-          <h2 className="Title">ADD A TOURIST ACTIVITY</h2>
+    <div>
+      <div className="ButtonContainer">
+        <Link to="/home" style={{ textDecoration: 'none' }}>
+          <button>Back to Home</button>{' '}
+        </Link>
+      </div>
 
- {/* Valor htmlFor conjuntos de propiedades o devoluciones lable para la propiedad.
+      <form className="Card" onSubmit={e => handleSubmit(e)}>
+        <h2 className="Title">ADD A TOURIST ACTIVITY</h2>
+
+        <div>
+          <label htmlFor="name">Name:</label>
+          <input
+            type="text"
+            value={activity.name}
+            name="name"
+            onChange={e => handleChange(e)}
+          />
+          {error.name & <p className="error">{error.name}</p>}
+        </div>
+        {/* Valor htmlFor conjuntos de propiedades o devoluciones lable para la propiedad.
 para el atributo especifica la etiqueta a la que desea enlazar un elemento de formulario. */}
 
-          <div>
-            <label htmlFor="name">Activity Name: </label>
-            <input
-              onChange={handleChange}
-              value={activity.name}
-              name="name"
-              type="text"
-              placeholder="Insert a name..."
-            ></input>
-            <br></br>
-          </div>
+        <div>
+          <label htmlFor="difficulty">Difficulty:</label>
+          <select type="text" name="difficulty" onChange={e => handleChange(e)}>
+            {error.difficulty & <p className="error">{error.difficulty}</p>}
+            <option value="">Difficulty</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+          <br></br>
+        </div>
 
-          <div>
-            <label htmlFor="season">Activity Season: </label>
-            <select
-              onChange={handleChange}
-              key={activity.season}
-              // value={activity.season}
-              id="season"
-              type="text"
-              name="season"
-              required="required"
-            >
-              <option value="">Choose Your Activity Season</option>
-              <option value="Summer">Summer</option>
-              <option value="Autumn">Autumn</option>
-              <option value="Winter">Winter</option>
-              <option value="Spring">Spring</option>
-            </select>
-            <br></br>
-          </div>
+        <div>
+          <label>Duration: </label>
+          <input
+            onChange={handleChange}
+            value={activity.duration}
+            id="duration"
+            type="number"
+            name="duration"
+            placeholder="The activity duration"
+            required="required"
+          ></input>
+          {error.name & <p className="error">{error.season}</p>}
+          <br></br>
+        </div>
 
-          <div>
-            <label>Activity Duration: </label>
-            <input
-              onChange={handleChange}
-              value={activity.duration}
-              id="duration"
-              type="text"
-              name="duration"
-              placeholder="The activity duration"
-              required="required"
-            ></input>
-            <br></br>
-          </div>
+        <div>
+          <label>Season: </label>
+          <select onChange={e => handleSelect(e)}>
+            {error.name & <p className="error">{error.season}</p>}
 
-          <div>
-            <label htmlFor="difficulty">Activity Difficulty: </label>
-            <select
-              onChange={handleChange}
-              key={activity.difficulty}
-              // value={activity.difficulty}
-              id="difficulty"
-              type="text"
-              name="difficulty"
-              required="required"
-            >
-              <option value="">Choose the Activity Difficulty</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </select>
-            <br></br>
-          </div>
+            <option value="">Choose Your Activity Season</option>
+            <option value="Summer">Summer</option>
+            <option value="Autumn">Autumn</option>
+            <option value="Winter">Winter</option>
+            <option value="Spring">Spring</option>
+          </select>
+          <br></br>
+        </div>
 
-          <div>
-            <label>Activity Countries: </label>
-            <select
-              onChange={handleSelect}
-              key={activity.countries}
-              // value={activity.countries}
-              id="countries"
-              type="text"
-              name="countries"
-              placeholder="Your Activity Country"
-              required="required"
-            >
-              {console.log(countries)}
-              <option value="All">Choose Activity Countries</option>
+        <div>
+          <label>Countries: </label>
+          <select onChange={e => handleSelect(e)}>
+            {countries.map(c => (
+              <option value={c.name}> {c.name} </option>
+            ))}
+          </select>
+          <br></br>
+        </div>
 
-              {countries.map(c => (
-                <option key={c.id} value={c.id}>
-                  {c.name}
-                </option>
-              ))}
-            </select>
-            <br></br>
-          </div>
-          <ul>
-            <li className="IdCountries">
-              {activity.countries.map(c => `~${c}`)}
-            </li>
-          </ul>
-          <div className="ButtonContainer">
-            <Link to="/home" style={{ textDecoration: 'none' }}>
-              <button>Back to Home</button>
-            </Link>
-            {error.name || error.season ? (
-              <span>Se ha detectado un error</span>
-            ) : null}
-            <button onClick={handleSubmit}>Add Activity</button>
-          </div>
-        </form>
-      </section>
-    </>
+        <button onClick={handleSubmit}>Add Activity</button>
+      </form>
+
+      {activity.countries.map(el => (
+        <div>
+          <p>{el}</p>
+          <button onClick={() => handleDelete(el)}>x</button>
+        </div>
+      ))}
+    </div>
   )
 }
