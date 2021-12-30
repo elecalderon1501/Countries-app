@@ -11,7 +11,7 @@ export default function CreateActivity() {
     name: '',
     difficulty: '',
     duration: '',
-    season: '',
+    season: [],
     countries: [],
   })
   const [error, setError] = useState({
@@ -61,10 +61,13 @@ export default function CreateActivity() {
 
   return (
     <>
-      
       <section className="Background">
         <form className="Card">
           <h2 className="Title">ADD A TOURIST ACTIVITY</h2>
+
+ {/* Valor htmlFor conjuntos de propiedades o devoluciones lable para la propiedad.
+para el atributo especifica la etiqueta a la que desea enlazar un elemento de formulario. */}
+
           <div>
             <label htmlFor="name">Activity Name: </label>
             <input

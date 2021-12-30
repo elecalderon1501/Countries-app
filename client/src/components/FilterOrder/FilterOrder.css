@@ -9,12 +9,12 @@
 .BackGround {
   display: inline;
   width: 100%;
-
   flex-direction: row;
   justify-content: center;
   padding: 15px;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-evenly;
+ 
 }
 
 select {

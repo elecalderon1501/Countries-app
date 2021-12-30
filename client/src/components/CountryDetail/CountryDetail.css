@@ -16,9 +16,10 @@
   width: 20vh;
   height: 5vh;
   margin-top: 5vh;
+  margin-left: 5vh;
   border-radius: 25px;
   background-color: var(--color5);
-  color: var(--color4);
+  color: var(--color2);
   font-size: 18px;
   font-size: 18px;
   font-weight: bold;  
@@ -33,4 +34,5 @@
   opacity: 0.9;
   border-radius: 20px;
   text-align: center;
+  box-shadow: 3px 3px 8px black;
 }

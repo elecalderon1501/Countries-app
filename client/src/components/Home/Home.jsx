@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 import React, { useState, useEffect } from 'react'
 import SearchBar from '../SearchBar/SearchBar'
-import FilterOrder from './FIlterOrder'
+import FilterOrder from '../FilterOrder/FilterOrder'
 import Nav from '../Nav/Nav'
 import Card from '../Card/Card'
 import '../Home/Home.css'
@@ -57,7 +57,7 @@ export default function Home() {
       <FilterOrder />
       <br />
       <div className="RefreshButton">
-        <button onClick={e => handleClick(e)}>Refresh Country</button>
+        <button onClick={e => handleClick(e)}>Refresh </button>
         {console.log(currentCountries)}
       </div>
       <br />

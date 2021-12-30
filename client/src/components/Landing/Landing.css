@@ -48,4 +48,6 @@
 }
 .Text:hover {
   background-color: #535925;
+  transition: 0.8s;
+  box-shadow: 3px 3px 8px white;
 }

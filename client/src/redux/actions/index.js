@@ -50,7 +50,7 @@ export function countryDetail(id) {
               payload: details.data
           })
       } catch (err) {
-          alert('Pais no encontrado')
+          alert('Country Not Found')
       }
   }
 };
@@ -65,7 +65,6 @@ export function postActivity(payload) {
 
   }
 }
-
 
 export function getAllActivities() {
   return async function (dispatch) {

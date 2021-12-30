@@ -53,21 +53,7 @@ function rootReducer(state = initialState, action) {
         filters: filteredContinent,
       }
 
-    case COUNTRY_BY_ACTIVITY:
-      const countryByActivity =
-        action.payload === 'All'
-          ? state.countries
-          : state.countries.filter(
-              c =>
-                c.Activities &&
-                c.Activities.filter(a => a.name === action.payload).length
-            )
-      console.log(countryByActivity)
-      return {
-        ...state,
-        filters: countryByActivity,
-      }
-
+    
     case FILTER_POPU:      
       if (action.payload === 'ASC') 
         return{
@@ -110,6 +96,20 @@ function rootReducer(state = initialState, action) {
     case POST_ACTIVITY:
       return {
         ...state,
+      }
+      case COUNTRY_BY_ACTIVITY:
+      const countryByActivity =
+        action.payload === 'All'
+          ? state.countries
+          : state.countries.filter(
+              c =>
+                c.Activities &&
+                c.Activities.filter(a => a.name === action.payload).length
+            )
+      console.log(countryByActivity)
+      return {
+        ...state,
+        filters: countryByActivity,
       }
 
     default:
