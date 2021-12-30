@@ -7,11 +7,11 @@
 }
 
 .AllCard {
-  margin: 2vh;
+  margin: 2vh 4vh 2vh 7vh;
   display: inline-table;
   background-color: white;
   width: 30vh;
-  height: 35vh;
+  height: 48vh;
   border-radius: 3%;
   opacity: 0.8;
   padding: 1px;
