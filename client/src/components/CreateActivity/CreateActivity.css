@@ -58,7 +58,7 @@
   width: 300px;
 }
 
-.CardForm button {
+.submitButton {
   border: 50px;
   width: 30vh;
   height: 5vh;
@@ -82,12 +82,27 @@
   text-shadow: 2px 2px 3px white;
 }
 
-.valuesSelected{
-  width: 200px;   
+.valuesSelected {
+  display: flex;
+  width: 200px;
   font-size: 14px;
-
+  color: var(--color2);
+  padding: 3px;
+  align-content: space-between;
 }
 
-.valuesSelected button{
-  color: white;
+oneValuesSelected {
+  color: var(--color2);
+  padding: 1px;
+  margin: 1px;
+}
+
+.valuesSelectedButton {
+  width: 0.5px;
+  color: var(--color2);
+  background-color: white;
+  border: 1px solid white;
+  text-align: center;
+  cursor: pointer;
+  
 }

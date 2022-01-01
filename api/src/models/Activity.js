@@ -15,12 +15,15 @@ module.exports = sequelize => {
       },
       difficulty: {
         type: DataTypes.ENUM('1', '2', '3', '4', '5'),
+        allownull: false
       },
       duration: {
         type: DataTypes.STRING,
+        allownull: false
       },
       season: {
         type: DataTypes.ENUM('Summer', 'Autumn', 'Winter', 'Spring'),
+        allownull: false
       },
     },
     {

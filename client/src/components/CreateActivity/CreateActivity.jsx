@@ -6,18 +6,14 @@ import './CreateActivity.css'
 
 function validate(activity) {
   let error = {}
-  if (!activity.name) {
-    error.name = 'Name Required'
-  } else if (!activity.difficulty) {
-    error.difficulty = 'Difficulty required'
-  } else if (!activity.duration) {
-    error.duration = 'Duration required'
-  } else if (!activity.season) {
-    error.season = 'Season required'
-  } else if (!activity.countries) {
-    error.countries = 'Country required'
+  !activity.name && (error.name = 'Name is required')
+  !activity.difficulty && (error.difficulty = 'Difficulty is required')
+  !activity.duration && (error.duration = 'Duration is required')
+  !activity.season && (error.season = 'Season is required')
+  !activity.countries && (error.countries = 'Country is required')
+  if (/^([0-9])*$/.test(activity.name)) {
+    error.name = 'Numbers are not allowed'
   }
-  
   return error
 }
 
@@ -30,14 +26,14 @@ export default function CreateActivity() {
     name: '',
     difficulty: '',
     duration: '',
-    season: [],
+    season: '',
     countries: [],
   })
   const [error, setError] = useState({
     name: '',
     difficulty: '',
     duration: '',
-    season: [],
+    season: '',
     countries: [],
   })
 
@@ -49,11 +45,18 @@ export default function CreateActivity() {
   function handleSubmit(e) {
     e.preventDefault()
     dispatch(postActivity(activity))
+    setError(
+      validate({
+        ...activity,
+        [e.target.name]: e.target.value,
+      })
+    )
+
     setActivity({
       name: '',
       difficulty: '',
       duration: '',
-      season: [],
+      season: '',
       countries: [],
     })
     alert('Activity Created Succesfuly')
@@ -71,7 +74,6 @@ export default function CreateActivity() {
       })
     )
   }
- 
 
   function handleSelect(e) {
     setActivity({
@@ -89,7 +91,7 @@ export default function CreateActivity() {
   }
   //------------------------------------------------------------------------
   return (
-    <div className='backGroundForm'>
+    <div className="backGroundForm">
       <div className="ButtonContainer">
         <Link to="/home" style={{ textDecoration: 'none' }}>
           <button>Back to Home</button>{' '}
@@ -118,19 +120,18 @@ para el atributo especifica la etiqueta a la que desea enlazar un elemento de fo
           <label htmlFor="difficulty">Difficulty:</label>
           <br />
           <select type="text" name="difficulty" onChange={e => handleChange(e)}>
-            {error.difficulty && <p className="error">{error.difficulty}</p>}
             <option value="">Difficulty</option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
             <option value="4">4</option>
             <option value="5">5</option>
-          </select>
-         
+          </select>{' '}
+          {error.difficulty && <p className="error">{error.difficulty}</p>}
         </div>
 
         <div>
-          <label>Duration (minutes): </label>
+          <label htmlFor="duration">Duration (minutes): </label>
           <br />
           <input
             onChange={handleChange}
@@ -141,22 +142,21 @@ para el atributo especifica la etiqueta a la que desea enlazar un elemento de fo
             placeholder="The activity duration"
             required="required"
           ></input>
-          {error.name && <p className="error">{error.season}</p>}
+          {error.duration && <p className="error">{error.season}</p>}
           <br />
         </div>
 
         <div>
-          <label>Season: </label>
+          <label htmlFor="season">Season: </label>
           <br />
-          <select onChange={e => handleSelect(e)}>
-            {error.name & <p className="error">{error.season}</p>}
-
+          <select type="text" name="season" onChange={e => handleChange(e)}>
             <option value="">Choose Your Activity Season</option>
             <option value="Summer">Summer</option>
             <option value="Autumn">Autumn</option>
             <option value="Winter">Winter</option>
             <option value="Spring">Spring</option>
-          </select>
+          </select>{' '}
+          {error.season && <p className="error">{error.season}</p>}
           <br />
         </div>
 
@@ -167,26 +167,31 @@ para el atributo especifica la etiqueta a la que desea enlazar un elemento de fo
             {countries.map(c => (
               <option value={c.name}> {c.name} </option>
             ))}
-          </select>
+          </select>{' '}
+          {error.countries && <p>{error.countries}</p>}
           <br></br>
         </div>
 
-        <button onClick={handleSubmit}>Add Activity</button>
-        
-        <div className='valuesSelected'>
-{activity.countries.map(el => (
-<div className= 'oneValueSelected' >
-  <p>{el}<button className='valuesSelectedButton' onClick={() => handleDelete(el)}>x</button></p>
-  
-</div>
-))}
-</div>
-        
+        <button className="submitButton" onClick={handleSubmit}>
+          Add Activity
+        </button>
+
+        <div className="valuesSelected">
+          {activity.countries.map(el => (
+            <div className="oneValueSelected">
+              <p>
+                {el}
+                <button
+                  className="valuesSelectedButton"
+                  onClick={() => handleDelete(el)}
+                >
+                  x
+                </button>
+              </p>
+            </div>
+          ))}
+        </div>
       </form>
-
-
-
-      
     </div>
   )
 }

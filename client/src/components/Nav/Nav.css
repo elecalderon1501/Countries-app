@@ -16,5 +16,5 @@
   padding: 20px;
   color: var(--color5);
   text-decoration: none;
-  text-shadow: 2px 2px 5px black;
+  text-shadow: 2px 2px 5px var(--color1);
 }
