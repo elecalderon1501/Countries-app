@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { getAllCountries, postActivity } from '../../redux/actions/index'
-import '../CreateActivity/CreateActivity.css'
+import './CreateActivity.css'
 
 function validate(activity) {
   let error = {}
@@ -17,6 +17,7 @@ function validate(activity) {
   } else if (!activity.countries) {
     error.countries = 'Country required'
   }
+  
   return error
 }
 
@@ -70,6 +71,7 @@ export default function CreateActivity() {
       })
     )
   }
+ 
 
   function handleSelect(e) {
     setActivity({
@@ -87,33 +89,36 @@ export default function CreateActivity() {
   }
   //------------------------------------------------------------------------
   return (
-    <div>
+    <div className='backGroundForm'>
       <div className="ButtonContainer">
         <Link to="/home" style={{ textDecoration: 'none' }}>
           <button>Back to Home</button>{' '}
         </Link>
       </div>
 
-      <form className="Card" onSubmit={e => handleSubmit(e)}>
-        <h2 className="Title">ADD A TOURIST ACTIVITY</h2>
+      <form className="CardForm" onSubmit={e => handleSubmit(e)}>
+        <h2>ADD A TOURIST ACTIVITY</h2>
 
         <div>
           <label htmlFor="name">Name:</label>
+          <br />
           <input
             type="text"
             value={activity.name}
             name="name"
             onChange={e => handleChange(e)}
           />
-          {error.name & <p className="error">{error.name}</p>}
+          {error.name && <p className="error">{error.name}</p>}
         </div>
         {/* Valor htmlFor conjuntos de propiedades o devoluciones lable para la propiedad.
 para el atributo especifica la etiqueta a la que desea enlazar un elemento de formulario. */}
+        <br />
 
         <div>
           <label htmlFor="difficulty">Difficulty:</label>
+          <br />
           <select type="text" name="difficulty" onChange={e => handleChange(e)}>
-            {error.difficulty & <p className="error">{error.difficulty}</p>}
+            {error.difficulty && <p className="error">{error.difficulty}</p>}
             <option value="">Difficulty</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -121,11 +126,12 @@ para el atributo especifica la etiqueta a la que desea enlazar un elemento de fo
             <option value="4">4</option>
             <option value="5">5</option>
           </select>
-          <br></br>
+         
         </div>
 
         <div>
-          <label>Duration: </label>
+          <label>Duration (minutes): </label>
+          <br />
           <input
             onChange={handleChange}
             value={activity.duration}
@@ -135,12 +141,13 @@ para el atributo especifica la etiqueta a la que desea enlazar un elemento de fo
             placeholder="The activity duration"
             required="required"
           ></input>
-          {error.name & <p className="error">{error.season}</p>}
-          <br></br>
+          {error.name && <p className="error">{error.season}</p>}
+          <br />
         </div>
 
         <div>
           <label>Season: </label>
+          <br />
           <select onChange={e => handleSelect(e)}>
             {error.name & <p className="error">{error.season}</p>}
 
@@ -150,11 +157,12 @@ para el atributo especifica la etiqueta a la que desea enlazar un elemento de fo
             <option value="Winter">Winter</option>
             <option value="Spring">Spring</option>
           </select>
-          <br></br>
+          <br />
         </div>
 
         <div>
           <label>Countries: </label>
+          <br />
           <select onChange={e => handleSelect(e)}>
             {countries.map(c => (
               <option value={c.name}> {c.name} </option>
@@ -164,14 +172,21 @@ para el atributo especifica la etiqueta a la que desea enlazar un elemento de fo
         </div>
 
         <button onClick={handleSubmit}>Add Activity</button>
+        
+        <div className='valuesSelected'>
+{activity.countries.map(el => (
+<div className= 'oneValueSelected' >
+  <p>{el}<button className='valuesSelectedButton' onClick={() => handleDelete(el)}>x</button></p>
+  
+</div>
+))}
+</div>
+        
       </form>
 
-      {activity.countries.map(el => (
-        <div>
-          <p>{el}</p>
-          <button onClick={() => handleDelete(el)}>x</button>
-        </div>
-      ))}
+
+
+      
     </div>
   )
 }

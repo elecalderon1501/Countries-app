@@ -14,7 +14,7 @@ export default function FilterOrder() {
   const dispatch = useDispatch()
 
   const activities = useSelector(state => state.activities)
-  let actCountries = activities?.map((el) => el.name)
+  let actCountries = activities?.map(el => el.name)
 
   const [, setOrden] = useState('')
 
@@ -24,6 +24,7 @@ export default function FilterOrder() {
   }, [dispatch])
 
   function handleCountryByContinent(e) {
+    e.preventDefault()
     dispatch(countryByContinent(e.target.value))
     setOrden(e.target.value)
   }
@@ -74,7 +75,11 @@ export default function FilterOrder() {
       </div>
 
       <div className="OrderName">
-        <select onChange={e => {handleFilterName(e)}}>
+        <select
+          onChange={e => {
+            handleFilterName(e)
+          }}
+        >
           <option value="">Order by Name</option>
           <option value="A-Z">Countries A to Z</option>
           <option value="Z-A">Countries Z to A</option>
@@ -82,8 +87,8 @@ export default function FilterOrder() {
       </div>
 
       <div className="FilterActivity">
-        <select  onChange= {e=>handleCountryByActivity(e)}>
-          <option >Filter By Activity</option>
+        <select onChange={e => handleCountryByActivity(e)}>
+          <option>Filter By Activity</option>
           {actCountries?.map(el => (
             <option key={el.name} value={el.name}>
               {el.charAt(0).toUpperCase() + el.slice(1).toLowerCase()}

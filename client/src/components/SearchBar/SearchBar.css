@@ -32,17 +32,17 @@ input {
   border-radius: 25px;
   margin-left: 10px;
   background-color: var(--color5);
-  color: var(--color2);
+  color: var(--color1);
   font-size: 18px;
   font-weight: bold;
   letter-spacing: 2px;
   text-shadow: 1px 1px 2px black;
-  box-shadow: 2px 2px 5px black;
+  box-shadow: 2px 2px 5px white;
   cursor: pointer;
 }
 
 .searchButton:hover{
-  background-color: var(--color4);
+  background-color: var(--color2);
   color: white;
   transition: 0.5s;
 }

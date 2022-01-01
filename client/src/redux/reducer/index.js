@@ -41,19 +41,19 @@ function rootReducer(state = initialState, action) {
       }
 
     case COUNTRY_BY_CONTINENT:
-      const countries = state.countries
+      // const countries = state.countries
       const filteredContinent =
         action.payload === 'All'
-          ? countries
-          : countries.filter(c => {
-              return c.continent.includes(action.payload)
-            })
+          ? state.countries
+          : state.countries.filter((c) => 
+               c.continent === action.payload)
+            
       return {
         ...state,
         filters: filteredContinent,
       }
 
-    
+        
     case FILTER_POPU:      
       if (action.payload === 'ASC') 
         return{
