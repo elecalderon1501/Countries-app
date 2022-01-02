@@ -14,7 +14,11 @@
 
 .LinkNav {
   padding: 20px;
-  color: var(--color5);
+  color: white;
   text-decoration: none;
-  text-shadow: 2px 2px 5px var(--color1);
+  text-shadow: 2px 2px 5px var(--color3)
+}
+
+.LinkNav:hover{
+  color: var(--color3);
 }

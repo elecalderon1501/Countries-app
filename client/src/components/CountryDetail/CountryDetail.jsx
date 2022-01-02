@@ -15,11 +15,11 @@ export default function CountryDetail() {
 
   return (
     <>
-    <div>
-    <Link className="Link" to="/home">
-            <button>Home Page</button>
-          </Link>
-    </div>
+      <div>
+        <Link className="Link" to="/home">
+          <button>Home Page</button>
+        </Link>
+      </div>
       {detail ? (
         <div className="BackGround">
           <div className="Card">
@@ -40,26 +40,15 @@ export default function CountryDetail() {
               <h4 padding="0px">Population: {detail.population}</h4>
               <h4 padding="0px">Area: {detail.area} km²</h4>
               <h4 padding="0px">Activities: </h4>
-
-              <div className="ActContainer">
-                {detail.Activities &&
-                  detail.Activities.map(a => (
-                    <p key={a.id}>
-                      <li>Name: {a.name}</li>
-                      <li>Season: {a.season} </li>
-                      <li>Duration: {a.duration} </li>
-                      <li>Difficulty: {a.difficulty} </li>
-                    </p>
-                  ))}
-              </div>
+              {detail.activities?.length > 0
+                  ? detail.activities?.map((ac) => ac.name + "  ")
+                  : "not found activity"}                 
             </div>
           </div>
-          
         </div>
       ) : (
         <span>Country Not Found</span>
       )}
     </>
-    
   )
 }
