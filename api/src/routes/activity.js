@@ -27,6 +27,19 @@ router.post('/', async (req, res, next) => {
   res.send('Country added')
 })
 
+// const [user, created] = await User.findOrCreate({
+//   where: { username: 'sdepold' },
+//   defaults: {
+//     job: 'Technical Lead JavaScript'
+//   }
+// });
+// console.log(user.username); // 'sdepold'
+// console.log(user.job); // This may or may not be 'Technical Lead JavaScript'
+// console.log(created); // The boolean indicating whether this instance was just created
+// if (created) {
+//   console.log(user.job); // This will certainly be 'Technical Lead JavaScript'
+// }
+
 router.get('/', async (req, res, next) => {
   try {
     let allActivity = await Activity.findAll()

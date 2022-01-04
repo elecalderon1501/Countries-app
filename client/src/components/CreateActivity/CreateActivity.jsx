@@ -6,11 +6,21 @@ import './CreateActivity.css'
 
 function validate(activity) {
   let error = {}
-  !activity.name && (error.name = 'Name is required')
-  !activity.difficulty && (error.difficulty = 'Difficulty is required')
-  !activity.duration && (error.duration = 'Duration is required')
-  !activity.season && (error.season = 'Season is required')
-  !activity.countries && (error.countries = 'Country is required')
+  if (!activity.name) {
+    error.name = 'Name is required'
+  }
+  if (!activity.difficulty) {
+    error.difficulty = 'Difficulty is required'
+  }
+  if (!activity.duration) {
+    error.duration = 'Duration is required'
+  }
+  if (!activity.season) {
+    error.season = 'Season is required'
+  }
+  if (!activity.countries) {
+    error.countries = 'Country is required'
+  }
   if (/^([0-9])*$/.test(activity.name)) {
     error.name = 'Numbers are not allowed'
   }
@@ -30,38 +40,15 @@ export default function CreateActivity() {
     countries: [],
   })
   const [error, setError] = useState({
-    name: '',
-    difficulty: '',
-    duration: '',
-    season: '',
-    countries: [],
+    // name: '',
+    // difficulty: '',
+    // duration: '',
+    // season: '',
+    // countries: [],
   })
 
-  useEffect(() => {
-    dispatch(getAllCountries())
-  }, [dispatch])
-
+  
   //----------------------------------------------------------
-  function handleSubmit(e) {
-    e.preventDefault()
-    dispatch(postActivity(activity))
-    setError(
-      validate({
-        ...activity,
-        [e.target.name]: e.target.value,
-      })
-    )
-
-    setActivity({
-      name: '',
-      difficulty: '',
-      duration: '',
-      season: '',
-      countries: [],
-    })
-    alert('Activity Created Succesfuly')
-  }
-
   function handleChange(e) {
     setActivity({
       ...activity,
@@ -73,6 +60,7 @@ export default function CreateActivity() {
         [e.target.name]: e.target.value,
       })
     )
+    console.log(activity)
   }
 
   function handleSelect(e) {
@@ -83,12 +71,38 @@ export default function CreateActivity() {
     })
   }
 
+  function handleSubmit(e) {
+    e.preventDefault()
+    dispatch(postActivity(activity))
+    alert('Activity Created Succesfuly')
+
+    setActivity({
+      name: '',
+      difficulty: '',
+      duration: '',
+      season: '',
+      countries: [],
+    })
+
+    setError(
+      validate({
+        ...activity,
+        [e.target.name]: e.target.value,
+      })
+    )
+  }
+
   function handleDelete(e) {
     setActivity({
       ...activity,
       countries: activity.countries.filter(act => act !== e),
     })
   }
+
+  useEffect(() => {
+    dispatch(getAllCountries())
+  }, [dispatch])
+
   //------------------------------------------------------------------------
   return (
     <div className="backGroundForm">
@@ -134,14 +148,14 @@ para el atributo especifica la etiqueta a la que desea enlazar un elemento de fo
           <label htmlFor="duration">Duration (minutes): </label>
           <br />
           <input
-            onChange={(e)=>handleChange(e)}
+            onChange={e => handleChange(e)}
             value={activity.duration}
             id="duration"
             type="number"
             name="duration"
             placeholder="The activity duration"
-            required="required"
           ></input>
+
           {error.duration && <p className="error">{error.season}</p>}
           <br />
         </div>
@@ -155,7 +169,8 @@ para el atributo especifica la etiqueta a la que desea enlazar un elemento de fo
             <option value="Autumn">Autumn</option>
             <option value="Winter">Winter</option>
             <option value="Spring">Spring</option>
-          </select>{' '}
+          </select>
+
           {error.season && <p className="error">{error.season}</p>}
           <br />
         </div>
@@ -165,9 +180,13 @@ para el atributo especifica la etiqueta a la que desea enlazar un elemento de fo
           <br />
           <select onChange={e => handleSelect(e)}>
             {countries.map(c => (
-              <option key={c.name} value={c.name}> {c.name} </option>
+              <option key={c.name} value={c.name}>
+                {' '}
+                {c.name}{' '}
+              </option>
             ))}
-          </select>{' '}
+          </select>
+
           {error.countries && <p>{error.countries}</p>}
           <br></br>
         </div>

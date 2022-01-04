@@ -54,6 +54,7 @@
 .CardForm input {
   margin-left: 0px;
   width: 300px;
+  color: black;
 }
 .CardForm select {
   width: 300px;
