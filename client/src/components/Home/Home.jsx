@@ -66,19 +66,18 @@ export default function Home() {
       </div>
 
       <div className="CardsBackground">
-        {/* <Cards countries={currentCountries} /> */}
-
         <div>
           {currentCountries?.map(c => {
             return (
               // <fragment>
-                <Card
-                  className="CardBackground"
-                  id={c.id}
-                  name={c.name}
-                  flags={c.flags}
-                  continent={c.continent}
-                />
+              <Card
+                key={c.id}
+                className="CardBackground"
+                id={c.id}
+                name={c.name}
+                flags={c.flags}
+                continent={c.continent}
+              />
               // </fragment>
             )
           })}

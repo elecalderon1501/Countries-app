@@ -8,13 +8,14 @@ import { Link } from 'react-router-dom'
 export default function CountryDetail() {
   const dispatch = useDispatch()
   const { id } = useParams()
+  const detail = useSelector(state => state.detail)
+
   useEffect(() => {
     dispatch(countryDetail(id))
   }, [dispatch, id])
-  const detail = useSelector(state => state.detail)
 
   return (
-    <>
+    <div>
       <div>
         <Link className="Link" to="/home">
           <button>Home Page</button>
@@ -29,7 +30,7 @@ export default function CountryDetail() {
 
             <div className="DetailContainer">
               <h2 padding="0px">
-                {detail.name}({detail.id})
+                {detail.name} <br /> ({detail.id})
               </h2>
               <h4 padding="0px">Continent: {detail.continent} </h4>
               <h4 padding="0px">
@@ -41,14 +42,14 @@ export default function CountryDetail() {
               <h4 padding="0px">Area: {detail.area} km²</h4>
               <h4 padding="0px">Activities: </h4>
               {detail.activities?.length > 0
-                  ? detail.activities?.map((ac) => ac.name + "  ")
-                  : "not found activity"}                 
+                ? detail.activities?.map(ac => ac.name + '  ')
+                : 'not found activity'}
             </div>
           </div>
         </div>
       ) : (
         <span>Country Not Found</span>
       )}
-    </>
+    </div>
   )
 }

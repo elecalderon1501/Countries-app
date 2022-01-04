@@ -126,7 +126,7 @@ para el atributo especifica la etiqueta a la que desea enlazar un elemento de fo
             <option value="3">3</option>
             <option value="4">4</option>
             <option value="5">5</option>
-          </select>{' '}
+          </select>
           {error.difficulty && <p className="error">{error.difficulty}</p>}
         </div>
 
@@ -134,7 +134,7 @@ para el atributo especifica la etiqueta a la que desea enlazar un elemento de fo
           <label htmlFor="duration">Duration (minutes): </label>
           <br />
           <input
-            onChange={handleChange}
+            onChange={(e)=>handleChange(e)}
             value={activity.duration}
             id="duration"
             type="number"
@@ -165,7 +165,7 @@ para el atributo especifica la etiqueta a la que desea enlazar un elemento de fo
           <br />
           <select onChange={e => handleSelect(e)}>
             {countries.map(c => (
-              <option value={c.name}> {c.name} </option>
+              <option key={c.name} value={c.name}> {c.name} </option>
             ))}
           </select>{' '}
           {error.countries && <p>{error.countries}</p>}

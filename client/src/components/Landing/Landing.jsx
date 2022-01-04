@@ -6,7 +6,7 @@ export default function Landing() {
   return (
       <div className="BackGroundLanding">
         <div className= "Container">
-        <Link to="/home" classname="Button" style={{ textDecoration: 'none' }}>
+        <Link to="/home" className="Button" style={{ textDecoration: 'none' }}>
           <h2 className="Text">The World</h2>
         </Link>
       

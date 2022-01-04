@@ -17,10 +17,11 @@ export default function Card({ id, name, flags, continents }) {
             <Link className="LinkCard" to={`/countries/${id}`}>
               {name}
               </Link>
+              <br />
               <Link className="LinkCard" to={`/countries/${id}`}>
-                ({id}){' '}
-              </Link>{' '}
-            </h1>{' '}
+                ({id})
+              </Link>
+            </h1>
             <h2 className="Continents">{continents}</h2>
           </div>
         </div>

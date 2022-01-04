@@ -12,10 +12,7 @@ import {
 
 export default function FilterOrder() {
   const dispatch = useDispatch()
-
   const activities = useSelector(state => state.activities)
-  //let actCountries = activities?.map(el => el.name)
-//const countries = useSelector((state)=>state.countries)
   const [, setOrden] = useState('')
 
   useEffect(() => {
@@ -89,19 +86,11 @@ export default function FilterOrder() {
       <div className="FilterActivity">
         <select onChange={e => handleCountryByActivity(e)}>
           <option>Filter By Activity</option>
-            {activities && activities.map((el) => (
-              <option value = {el.name}>{el.name}</option>
-            ))}
-
-          {/* {actCountries?.map(el => (
-            <option key={el.name} value={el.name}>
-              {el.charAt(0).toUpperCase() + el.slice(1).toLowerCase()}
-            </option>
-          ))} */}
+          {activities &&
+            activities.map(el => <option key={el.name}   value={el.name}>{el.name}</option>)}
         </select>
       </div>
     </div>
   )
 }
-//allCountries = state.countries = countries
-//allActivities = state.activities = activities
+

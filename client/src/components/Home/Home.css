@@ -1,16 +1,16 @@
 :root {
-  --color1: #0396a6;
-  --color2: #026873;
-  --color3: #82d0d9;
-  --color4: #535925;
-  --color5: #bfba75;
+  --color1: #417fa6;
+  --color2: #273859;
+  --color3: #56a1bf;
+  --color4: #bfa75e;
+  --color5: #7fa644;
   --color6: #b6bfc0;
 }
 
 body {
-  background-image: url('../../img/mapamundi-transparente-azul.png');
-  background-repeat: no-repeat;
-  background-size: auto;
+  background-image: url('../../img/vintage-concrete.png');
+  background-repeat:initial;
+  background-attachment: fixed;
   background-color: black;
 }
 
@@ -30,7 +30,7 @@ body {
   font-weight: bold;
   letter-spacing: 2px;
   text-shadow: 1px 1px 2px black;
-  box-shadow: 2px 2px 5px white;
+  box-shadow: 2px 2px 5px black;
   cursor: pointer;
 }
 
@@ -59,13 +59,12 @@ body {
   font-size: 16px;
   font-weight: bold;
   text-shadow: 1px 1px 2px black;
-  box-shadow: 2px 2px 5px white;
+  box-shadow: 2px 2px 5px black;
   cursor: pointer;
 }
 
 .Pagination button:hover {
   background-color: var(--color5);
-  color: var(--color2);
   border: 2px solid var(--color5);
   transition: 0.5s;
 }

@@ -1,30 +1,35 @@
 :root {
-  --color1: #0396a6;
-  --color2: #026873;
-  --color3: #82d0d9;
-  --color4: #535925;
-  --color5: #bfba75;
+  --color1: #417FA6;
+  --color2: #273859;
+  --color3: #56A1BF;
+  --color4: #BFA75E;
+  --color5: #7fa644;
+  --color6: #b6bfc0;
 }
 
 .BackGround {
   display: flex;
   margin-top: 3%;
 }
+.Image{
+  height: 30vh;
+}
+
 
 .Link button {
   border: 50px;
   width: 20vh;
   height: 5vh;
-  margin-top: 5vh;
-  margin-left: 5vh;
+  margin-top: 2vh;
+  margin-left: 99vh;
   border-radius: 25px;
   background-color: var(--color5);
   color: var(--color1);
   font-size: 18px;
   font-size: 18px;
   font-weight: bold;  
-  text-shadow: 1px 1px 2px black;
-  box-shadow: 2px 2px 5px white;
+  text-shadow: 1px 1px 1px white;
+  box-shadow: 2px 2px 5px black;
   cursor: pointer;
 }
 
@@ -40,5 +45,6 @@
 .Link button:hover{
   background-color: var(--color2);
   color: white;
+  text-shadow: 1px 1px 1px black;
   transition: 0.5s;
 }
