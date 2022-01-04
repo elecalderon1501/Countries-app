@@ -7,7 +7,7 @@ import {
   FILTER_POPU,
   GET_ALL_ACTIVITIES,
   POST_ACTIVITY,
-  ORDER_BY_NAME
+  ORDER_BY_NAME,
 } from '../actions/actionTypes'
 
 const initialState = {
@@ -45,47 +45,41 @@ function rootReducer(state = initialState, action) {
       const filteredContinent =
         action.payload === 'All'
           ? state.countries
-          : state.countries.filter((c) => 
-               c.continent === action.payload)
-            
+          : state.countries.filter(c => c.continent === action.payload)
+
       return {
         ...state,
         filters: filteredContinent,
       }
 
-        
-    case FILTER_POPU:      
-      if (action.payload === 'ASC') 
-        return{
-        ...state,
-        filters : [...state.filters].sort((a, b) => 
-           a.population > b.population? 1 : -1        
+    case FILTER_POPU:
+      if (action.payload === 'ASC')
+        return {
+          ...state,
+          filters: [...state.filters].sort((a, b) =>
+            a.population > b.population ? 1 : -1
           ),
-      };
-      return{
+        }
+      return {
         ...state,
-        filters: [...state.filters].sort((a,b) =>
-        a.population > b.population ? -1 : 1
-        )
-      }
-      
-
-      case ORDER_BY_NAME:{
-        if (action.payload === 'A-Z')
-          return{
-            ...state,
-            filters: [...state.filters].sort((a, b) =>
-            a.name > b.name ? 1:-1
-            )
-          }
-          return{
-            ...state,
-            filters: [...state.filters].sort((a,b) =>
-            a.name > b.name ? -1: 1
-            ),
-          };
+        filters: [...state.filters].sort((a, b) =>
+          a.population > b.population ? -1 : 1
+        ),
       }
 
+    case ORDER_BY_NAME: {
+      if (action.payload === 'A-Z')
+        return {
+          ...state,
+          filters: [...state.filters].sort((a, b) =>
+            a.name > b.name ? 1 : -1
+          ),
+        }
+      return {
+        ...state,
+        filters: [...state.filters].sort((a, b) => (a.name > b.name ? -1 : 1)),
+      }
+    }
 
     case GET_ALL_ACTIVITIES:
       return {
@@ -97,13 +91,15 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
       }
-      case COUNTRY_BY_ACTIVITY:
-      
+    case COUNTRY_BY_ACTIVITY:
+      const activitiesFilter = action.payload === 'All' ? state.countries : state.countries.filter((el)=> el.activities && el.activities.map((e)=> e.name).includes(action.payload))
       return {
         ...state,
-        filters: state.countries.filter((el) => el.activities.map((e) => e.name).includes(action.payload)
-        ),
-      };
+        filters: activitiesFilter
+        // filters: state.countries.filter(el =>
+        //   el.activities.map(e => e.name).includes(action.payload)
+        // ),
+      }
 
     default:
       return state
@@ -111,3 +107,7 @@ function rootReducer(state = initialState, action) {
 }
 
 export default rootReducer
+
+
+//countries = filters
+//allCountries = countries
