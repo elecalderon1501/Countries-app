@@ -22,7 +22,7 @@ function validate(activity) {
     error.countries = 'Country is required'
   }
   if (/^([0-9])*$/.test(activity.name)) {
-    error.name = 'Numbers are not allowed'
+    error.name = 'Error Name'
   }
   return error
 }
@@ -47,7 +47,6 @@ export default function CreateActivity() {
     // countries: [],
   })
 
-  
   //----------------------------------------------------------
   function handleChange(e) {
     setActivity({
@@ -73,23 +72,28 @@ export default function CreateActivity() {
 
   function handleSubmit(e) {
     e.preventDefault()
-    dispatch(postActivity(activity))
-    alert('Activity Created Succesfuly')
+    setError(validate(error))
+    if (Object.keys(error).length !== 0) {
+      alert('Debe llenar todos los campos')
+    } else {
+      dispatch(postActivity(activity))
 
-    setActivity({
-      name: '',
-      difficulty: '',
-      duration: '',
-      season: '',
-      countries: [],
-    })
-
-    setError(
-      validate({
-        ...activity,
-        [e.target.name]: e.target.value,
+      setActivity({
+        name: '',
+        difficulty: '',
+        duration: '',
+        season: '',
+        countries: [],
       })
-    )
+      alert('Activity Created Succesfuly')
+
+      setError(
+        validate({
+          ...activity,
+          [e.target.name]: e.target.value,
+        })
+      )
+    }
   }
 
   function handleDelete(e) {
@@ -123,6 +127,7 @@ export default function CreateActivity() {
             value={activity.name}
             name="name"
             onChange={e => handleChange(e)}
+            required
           />
           {error.name && <p className="error">{error.name}</p>}
         </div>
@@ -194,23 +199,22 @@ para el atributo especifica la etiqueta a la que desea enlazar un elemento de fo
         <button className="submitButton" onClick={handleSubmit}>
           Add Activity
         </button>
-
-        <div className="valuesSelected">
-          {activity.countries.map(el => (
-            <div className="oneValueSelected">
-              <p>
-                {el}
-                <button
-                  className="valuesSelectedButton"
-                  onClick={() => handleDelete(el)}
-                >
-                  x
-                </button>
-              </p>
-            </div>
-          ))}
-        </div>
       </form>
+      <div className="valuesSelected">
+        {activity.countries.map(el => (
+          <div className="oneValueSelected">
+            <p>
+              {el}
+              <button
+                className="valuesSelectedButton"
+                onClick={() => handleDelete(el)}
+              >
+                x
+              </button>
+            </p>
+          </div>
+        ))}
+      </div>
     </div>
   )
 }

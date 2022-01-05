@@ -1,12 +1,11 @@
 :root {
-  --color1: #417fa6;
+  --color1: #417FA6;
   --color2: #273859;
-  --color3: #56a1bf;
-  --color4: #bfa75e;
+  --color3: #56A1BF;
+  --color4: #BFA75E;
   --color5: #7fa644;
-  --color6: #b6bfc0;
+  --color6: #D8E0D0;
 }
-
 .BackGround {
   display: inline;
   width: 100%;

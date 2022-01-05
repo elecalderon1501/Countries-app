@@ -96,9 +96,7 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         filters: activitiesFilter
-        // filters: state.countries.filter(el =>
-        //   el.activities.map(e => e.name).includes(action.payload)
-        // ),
+        
       }
 
     default:

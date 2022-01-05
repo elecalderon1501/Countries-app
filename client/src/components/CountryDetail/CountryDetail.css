@@ -4,7 +4,7 @@
   --color3: #56A1BF;
   --color4: #BFA75E;
   --color5: #7fa644;
-  --color6: #b6bfc0;
+  --color6: #D8E0D0;
 }
 
 .BackGround {
@@ -12,7 +12,8 @@
   margin-top: 3%;
 }
 .Image{
-  height: 30vh;
+  width: 70vh;
+  height: 40vh;
 }
 
 
@@ -24,12 +25,12 @@
   margin-left: 99vh;
   border-radius: 25px;
   background-color: var(--color5);
-  color: var(--color1);
+  color: white;
   font-size: 18px;
   font-size: 18px;
   font-weight: bold;  
-  text-shadow: 1px 1px 1px white;
-  box-shadow: 2px 2px 5px black;
+  text-shadow: 1px 1px 1px black;
+  box-shadow: 2px 2px 5px white;
   cursor: pointer;
 }
 
@@ -43,7 +44,6 @@
 }
 
 .Link button:hover{
-  background-color: var(--color2);
   color: white;
   text-shadow: 1px 1px 1px black;
   transition: 0.5s;

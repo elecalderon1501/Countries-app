@@ -1,10 +1,10 @@
 :root {
-  --color1: #417FA6;
+  --color1: #417fa6;
   --color2: #273859;
-  --color3: #56A1BF;
-  --color4: #BFA75E;
+  --color3: #56a1bf;
+  --color4: #bfa75e;
   --color5: #7fa644;
-  --color6: #b6bfc0;
+  --color6: #d8e0d0;
 }
 
 .Container {
@@ -32,8 +32,9 @@ input {
   height: 5vh;
   border-radius: 25px;
   margin-left: 10px;
-  background-color: var(--color5);
-  color: var(--color1);
+  background-color:var(--color5);
+  color:white;
+  opacity: 0.8;
   font-size: 18px;
   font-weight: bold;
   letter-spacing: 2px;
@@ -42,7 +43,7 @@ input {
   cursor: pointer;
 }
 
-.searchButton:hover{
+.searchButton:hover {
   background-color: var(--color2);
   color: white;
   transition: 0.5s;

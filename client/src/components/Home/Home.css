@@ -2,14 +2,21 @@
   --color1: #417fa6;
   --color2: #273859;
   --color3: #56a1bf;
-  --color4: #bfa75e;
+  --color4: #567874;
   --color5: #7fa644;
   --color6: #b6bfc0;
 }
 
 body {
-  background-image: url('../../img/vintage-concrete.png');
-  background-repeat:initial;
+  background-image: linear-gradient(
+    to right bottom,
+    #191d30,
+    #2b3c4e,
+    #425d6a,
+    #5f7f85,
+    #83a2a0
+  );
+  background-repeat: initial;
   background-attachment: fixed;
   background-color: black;
 }
@@ -25,7 +32,8 @@ body {
   border-radius: 25px;
   margin-left: 45%;
   background-color: var(--color5);
-  color: var(--color1);
+  color:white;
+  opacity: 0.8;
   font-size: 18px;
   font-weight: bold;
   letter-spacing: 2px;
@@ -67,4 +75,7 @@ body {
   background-color: var(--color5);
   border: 2px solid var(--color5);
   transition: 0.5s;
+}
+input{
+  color: var(--color2);
 }

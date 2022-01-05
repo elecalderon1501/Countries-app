@@ -69,7 +69,6 @@ export default function Home() {
         <div>
           {currentCountries?.map(c => {
             return (
-              // <fragment>
               <Card
                 key={c.id}
                 className="CardBackground"
@@ -78,7 +77,6 @@ export default function Home() {
                 flags={c.flags}
                 continent={c.continent}
               />
-              // </fragment>
             )
           })}
         </div>

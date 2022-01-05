@@ -1,14 +1,15 @@
 :root {
-  --color1: #417FA6;
+  --color1: #417fa6;
   --color2: #273859;
-  --color3: #56A1BF;
-  --color4: #BFA75E;
+  --color3: #56a1bf;
+  --color4: #bfa75e;
   --color5: #7fa644;
   --color6: #b6bfc0;
 }
 
 .backGroundForm {
   display: flex;
+  color: white;
 }
 
 .ButtonContainer button {
@@ -18,7 +19,7 @@
   border-radius: 25px;
   margin: 25px 0px 0px 25px;
   background-color: var(--color5);
-  color: var(--color1);
+  color: white;
   font-size: 18px;
   font-weight: bold;
   letter-spacing: 2px;
@@ -30,17 +31,14 @@
 .CardForm {
   display: grid;
   flex-direction: row;
-  /* grid-auto-rows: 50px; */
-  /* display: flex;
-  flex-direction: column;
-  align-items: flex-start; */
   width: 500px;
-  height: 600px;
-  background-color: var(--color3);
-  opacity: 0.9;
+  height: 700px;
+  background-image: url('../../img/fondo-form.jpg');
+  background-size: cover;
+  opacity: 0.8;
   margin: 15px 0px 0px 250px;
   border-radius: 30px;
-  box-shadow: 3px 3px 5px white;
+  box-shadow: 5px 5px 8px white;
   text-align: center;
   align-content: center;
 }
@@ -67,8 +65,8 @@
   border-radius: 25px;
   margin: 5vh 10vh 0vh 35vh;
   background-color: var(--color5);
-  color: var(--color1);
-  font-size: 18px;
+  color: white;
+  font-size: 20px;
   font-weight: bold;
   letter-spacing: 2px;
   text-shadow: 1px 1px 2px black;
@@ -78,23 +76,23 @@
 
 .CardForm label {
   margin-left: 0px;
-  color: var(--color2);
-  font-size: 18px;
+  color: var(--color4);
+  font-size: 20px;
   font-weight: bold;
-  text-shadow: 2px 2px 3px white;
+  text-shadow: 2px 2px 3px black;
 }
 
 .valuesSelected {
   display: flex;
   width: 200px;
   font-size: 14px;
-  color: var(--color2);
+  color: white;
   padding: 3px;
   align-content: space-between;
 }
 
 oneValuesSelected {
-  color: var(--color2);
+  color: white;
   padding: 1px;
   margin: 1px;
 }
@@ -102,9 +100,15 @@ oneValuesSelected {
 .valuesSelectedButton {
   width: 0.5px;
   color: var(--color2);
-  background-color: white;
+  background-color: var(--color6);
   border: 1px solid white;
   text-align: center;
   cursor: pointer;
-  
+}
+.error{
+  background-color: var(--color6);
+  color:red;
+  font-size:bold;
+  margin-left: 10vh;
+  margin-right: 10vh;
 }
