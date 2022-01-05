@@ -41,7 +41,6 @@ function rootReducer(state = initialState, action) {
       }
 
     case COUNTRY_BY_CONTINENT:
-      // const countries = state.countries
       const filteredContinent =
         action.payload === 'All'
           ? state.countries
@@ -92,11 +91,17 @@ function rootReducer(state = initialState, action) {
         ...state,
       }
     case COUNTRY_BY_ACTIVITY:
-      const activitiesFilter = action.payload === 'All' ? state.countries : state.countries.filter((el)=> el.activities && el.activities.map((e)=> e.name).includes(action.payload))
+      const activitiesFilter =
+        action.payload === 'All'
+          ? state.countries
+          : state.countries.filter(
+              el =>
+                el.activities &&
+                el.activities.map(e => e.name).includes(action.payload)
+            )
       return {
         ...state,
-        filters: activitiesFilter
-        
+        filters: activitiesFilter,
       }
 
     default:
@@ -107,5 +112,3 @@ function rootReducer(state = initialState, action) {
 export default rootReducer
 
 
-//countries = filters
-//allCountries = countries

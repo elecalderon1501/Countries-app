@@ -15,10 +15,10 @@ export default function Home() {
   const [currentPage, setCurrentPage] = useState(1)
   const [countriesPage] = useState(10)
 
-  let indexOfLastCountry = currentPage * countriesPage //1*9
-  let indexOfFirstCountry = indexOfLastCountry - countriesPage //9-9
+  let indexOfLastCountry = currentPage * countriesPage
+  let indexOfFirstCountry = indexOfLastCountry - countriesPage
 
-  let currentCountries = filters?.slice(indexOfFirstCountry, indexOfLastCountry) //(0,9)
+  let currentCountries = filters?.slice(indexOfFirstCountry, indexOfLastCountry)
   let pages = []
 
   const numOfPages = Math.ceil(filters.length / countriesPage)
@@ -61,6 +61,7 @@ export default function Home() {
         {console.log(currentCountries)}
       </div>
       <br />
+
       <div>
         <ul className="Pagination">{renderPages}</ul>
       </div>

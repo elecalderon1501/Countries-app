@@ -40,11 +40,11 @@ export default function CreateActivity() {
     countries: [],
   })
   const [error, setError] = useState({
-    // name: '',
-    // difficulty: '',
-    // duration: '',
-    // season: '',
-    // countries: [],
+    name: '',
+    difficulty: '',
+    duration: '',
+    season: '',
+    countries: [],
   })
 
   //----------------------------------------------------------
@@ -131,8 +131,7 @@ export default function CreateActivity() {
           />
           {error.name && <p className="error">{error.name}</p>}
         </div>
-        {/* Valor htmlFor conjuntos de propiedades o devoluciones lable para la propiedad.
-para el atributo especifica la etiqueta a la que desea enlazar un elemento de formulario. */}
+
         <br />
 
         <div>
@@ -186,8 +185,7 @@ para el atributo especifica la etiqueta a la que desea enlazar un elemento de fo
           <select onChange={e => handleSelect(e)}>
             {countries.map(c => (
               <option key={c.name} value={c.name}>
-                {' '}
-                {c.name}{' '}
+                {c.name}
               </option>
             ))}
           </select>

@@ -7,7 +7,7 @@ export default function Nav() {
     <div className="navBar">
       <Link className="LinkNav" to="/">
         <h4>Start</h4>
-      </Link>      
+      </Link>
       <Link className="LinkNav" to="/activity">
         <h4>Add Activity</h4>
       </Link>

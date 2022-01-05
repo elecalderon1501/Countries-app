@@ -44,6 +44,7 @@
 }
 
 .Link button:hover{
+  background-color: var(--color2);
   color: white;
   text-shadow: 1px 1px 1px black;
   transition: 0.5s;

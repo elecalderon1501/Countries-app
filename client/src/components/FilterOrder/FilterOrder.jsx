@@ -85,7 +85,7 @@ export default function FilterOrder() {
 
       <div className="FilterActivity">
         <select onChange={e => handleCountryByActivity(e)}>
-          <option>Filter By Activity</option>
+          <option value={'All'}>Filter By Activity</option>
           {activities &&
             activities.map(el => <option key={el.name}   value={el.name}>{el.name}</option>)}
         </select>

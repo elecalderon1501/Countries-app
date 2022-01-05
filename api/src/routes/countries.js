@@ -36,10 +36,6 @@ router.get('/', async (req, res, next) => {
 // Debe traer solo los datos pedidos en la ruta de detalle de país
 // Incluir los datos de las actividades turísticas correspondientes
 
-// model.findOne({
-//   order: [ [ 'id', 'DESC' ]],
-//   });
-
 router.get('/:id', async (req, res, next) => {
   const { id } = req.params
   try {

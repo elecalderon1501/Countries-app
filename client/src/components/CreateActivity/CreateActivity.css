@@ -32,13 +32,13 @@
   display: grid;
   flex-direction: row;
   width: 500px;
-  height: 700px;
+  height: 800px;
   background-image: url('../../img/fondo-form.jpg');
   background-size: cover;
   opacity: 0.8;
   margin: 15px 0px 0px 250px;
   border-radius: 30px;
-  box-shadow: 5px 5px 8px white;
+  box-shadow: 5px 5px 8px black;
   text-align: center;
   align-content: center;
 }

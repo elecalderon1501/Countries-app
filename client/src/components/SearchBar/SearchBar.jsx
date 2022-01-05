@@ -27,7 +27,11 @@ export default function SearchBar() {
           value={name}
           type="text"
         />
-        <button className='searchButton'   onClick={e => handleSubmit(e)} type="submit">
+        <button
+          className="searchButton"
+          onClick={e => handleSubmit(e)}
+          type="submit"
+        >
           Search
         </button>
       </div>

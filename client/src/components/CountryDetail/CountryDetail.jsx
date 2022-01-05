@@ -42,12 +42,14 @@ export default function CountryDetail() {
               <h4 padding="0px">Area: {detail.area} km²</h4>
               <h4 padding="0px">Activities: </h4>
               {detail.activities?.length > 0
-                ? detail.activities?.map(ac => <p key={ac.id}>
-                  <li>Name: {ac.name}</li>
-                  <li>Season: {ac.season}</li>
-                  <li>Duration: {ac.duration}</li>
-                  <li>Difficulty: {ac.difficulty}</li>
-                </p> )
+                ? detail.activities?.map(ac => (
+                    <p key={ac.id}>
+                      <li>Name: {ac.name}</li>
+                      <li>Season: {ac.season}</li>
+                      <li>Duration: {ac.duration}</li>
+                      <li>Difficulty: {ac.difficulty}</li>
+                    </p>
+                  ))
                 : 'not found activity'}
             </div>
           </div>

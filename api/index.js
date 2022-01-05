@@ -23,7 +23,7 @@ const axios = require('axios')
 //const { map } = require('./src/app.js')
 
 // Syncing all the models at once.
-conn.sync({ force: true }).then(async () => {
+conn.sync({ force: false }).then(async () => {
   const preLoadData = await Country.findAll()
   if (preLoadData.length < 1) {
     const getApiData = await axios.get('https://restcountries.com/v3.1/all')

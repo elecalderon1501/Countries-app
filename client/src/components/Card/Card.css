@@ -1,10 +1,10 @@
 :root {
-  --color1: #417FA6;
+  --color1: #417fa6;
   --color2: #273859;
-  --color3: #56A1BF;
-  --color4: #BFA75E;
+  --color3: #56a1bf;
+  --color4: #bfa75e;
   --color5: #7fa644;
-  --color6: #D8E0D0;
+  --color6: #d8e0d0;
 }
 .AllCard {
   margin: 2vh 4vh 2vh 7vh;
@@ -25,7 +25,6 @@
   color: white;
   transition: 0.6s;
   width: 31vh;
-  height: 56vh;
   box-shadow: 2px 2px 5px var(--color2);
 }
 .Container {
@@ -41,7 +40,7 @@
 }
 
 .ImageCard {
-  width: 25vh;
+  width: 30vh;
   height: 20vh;
   box-shadow: 2px 2px 4px var(--color2);
 }
