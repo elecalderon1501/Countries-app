@@ -67,8 +67,10 @@ export default function Home() {
       </div>
 
       <div className="CardsBackground">
+        
         <div>
-          {currentCountries?.map(c => {
+          
+          {filters.length>0? currentCountries?.map(c => {
             return (
               <Card
                 key={c.id}
@@ -79,7 +81,7 @@ export default function Home() {
                 continent={c.continent}
               />
             )
-          })}
+          }) :  <h1> Country not found </h1>}
         </div>
       </div>
     </>

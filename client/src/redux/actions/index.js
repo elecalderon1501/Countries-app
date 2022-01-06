@@ -30,11 +30,10 @@ export function countryByName(name) {
   return async function (dispatch) {
       try {
           const country = await axios.get(`http://localhost:3001/countries?name=${name}`)
-          country.data.length ?
-              dispatch({
+             return dispatch({
                   type: COUNTRY_BY_NAME,
                   payload: country.data
-              }) : alert('Pais no encontrado')
+              })
       } catch (err) {
           console.log(err)
       }

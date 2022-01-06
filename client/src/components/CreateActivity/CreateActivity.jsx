@@ -40,11 +40,11 @@ export default function CreateActivity() {
     countries: [],
   })
   const [error, setError] = useState({
-    name: '',
-    difficulty: '',
-    duration: '',
-    season: '',
-    countries: [],
+    // name: '',
+    // difficulty: '',
+    // duration: '',
+    // season: '',
+    // countries: [],
   })
 
   //----------------------------------------------------------
@@ -131,7 +131,8 @@ export default function CreateActivity() {
           />
           {error.name && <p className="error">{error.name}</p>}
         </div>
-
+        {/* Valor htmlFor conjuntos de propiedades o devoluciones lable para la propiedad.
+para el atributo especifica la etiqueta a la que desea enlazar un elemento de formulario. */}
         <br />
 
         <div>
@@ -185,7 +186,8 @@ export default function CreateActivity() {
           <select onChange={e => handleSelect(e)}>
             {countries.map(c => (
               <option key={c.name} value={c.name}>
-                {c.name}
+                {' '}
+                {c.name}{' '}
               </option>
             ))}
           </select>
@@ -194,25 +196,26 @@ export default function CreateActivity() {
           <br></br>
         </div>
 
+        <div className="valuesSelected">
+          {activity.countries.map(el => (
+            <div className="oneValueSelected">
+              <p>
+                {el}
+                <button
+                  className="valuesSelectedButton"
+                  onClick={() => handleDelete(el)}
+                >
+                  x
+                </button>
+              </p>
+            </div>
+          ))}
+        </div>
+
         <button className="submitButton" onClick={handleSubmit}>
           Add Activity
         </button>
       </form>
-      <div className="valuesSelected">
-        {activity.countries.map(el => (
-          <div className="oneValueSelected">
-            <p>
-              {el}
-              <button
-                className="valuesSelectedButton"
-                onClick={() => handleDelete(el)}
-              >
-                x
-              </button>
-            </p>
-          </div>
-        ))}
-      </div>
     </div>
   )
 }
