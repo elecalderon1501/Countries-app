@@ -45,7 +45,7 @@ export default function FilterOrder() {
   }
 
   return (
-    <div className="BackGround">
+    <div className="BackGroundFilter">
       <div className="FilterContinent">
         <select onChange={e => handleCountryByContinent(e)}>
           <option value="All">Filters By Continents</option>

@@ -8,8 +8,7 @@
 }
 
 .backGroundForm {
-  display: grid;
-  grid-area: auto;
+  display: flex;
   flex-direction: row;
   color: white;
 }
@@ -65,7 +64,7 @@
   width: 30vh;
   height: 5vh;
   border-radius: 25px;
-  margin: 5vh 10vh 0vh 35vh;
+  margin: 5vh 10vh 3vh 35vh;
   background-color: var(--color5);
   color: white;
   font-size: 20px;

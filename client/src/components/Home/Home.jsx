@@ -48,6 +48,7 @@ export default function Home() {
   function handleClick(e) {
     e.preventDefault()
     dispatch(getAllCountries())
+    
   }
 
   return (

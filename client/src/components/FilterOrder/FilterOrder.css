@@ -6,8 +6,8 @@
   --color5: #7fa644;
   --color6: #D8E0D0;
 }
-.BackGround {
-  display: inline;
+.BackGroundFilter {
+  display: flex;
   width: 100%;
   flex-direction: row;
   justify-content: center;

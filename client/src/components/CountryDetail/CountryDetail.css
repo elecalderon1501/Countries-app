@@ -1,21 +1,21 @@
 :root {
-  --color1: #417FA6;
+  --color1: #417fa6;
   --color2: #273859;
-  --color3: #56A1BF;
-  --color4: #BFA75E;
+  --color3: #56a1bf;
+  --color4: #bfa75e;
   --color5: #7fa644;
-  --color6: #D8E0D0;
+  --color6: #d8e0d0;
 }
 
-.BackGround {
+.BackGroundDetail {
   display: flex;
-  margin-top: 3%;
+  flex-direction: row;
 }
-.Image{
+
+.Image {
   width: 70vh;
   height: 40vh;
 }
-
 
 .Link button {
   border: 50px;
@@ -28,22 +28,30 @@
   color: white;
   font-size: 18px;
   font-size: 18px;
-  font-weight: bold;  
+  font-weight: bold;
   text-shadow: 1px 1px 1px black;
   box-shadow: 2px 2px 5px white;
   cursor: pointer;
 }
 
-.Card {
+.CardDetail {
+  display: flex;
+  flex-direction: row;
   background-color: white;
+  width: 20vh;
+  height: auto;
   color: var(--color2);
   opacity: 0.9;
   border-radius: 20px;
   text-align: center;
+  align-items: center;
+  align-content: center;
+
   box-shadow: 3px 3px 8px var(--color3);
+  margin: 5vh 5vh 5vh 5vh;
 }
 
-.Link button:hover{
+.Link button:hover {
   background-color: var(--color2);
   color: white;
   text-shadow: 1px 1px 1px black;
